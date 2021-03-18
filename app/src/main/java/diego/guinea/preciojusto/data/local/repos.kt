@@ -1,7 +1,7 @@
 package diego.guinea.preciojusto.data.local
 
 
-const val PrincipalRepo = ""
+const val PrincipalRepo = "https://www.dropbox.com/s/osz2g6reqb2muci/"
 
 const val LLamadaDB =
     "CREATE TABLE persons(id int(4)," + "name varchar(100),"+
