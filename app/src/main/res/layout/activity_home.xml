@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     android:background="@android:color/background_light">
 
+<!--    <diego.guinea.preciojusto.ui.presenter.ExoPlayerView-->
+<!--        android:id="@+id/videoDeFondo"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="right"-->
+<!--        android:background="@color/exo_edit_mode_background_color"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--    </diego.guinea.preciojusto.ui.presenter.ExoPlayerView>-->
+
     <ImageView
         android:id="@+id/play_button"
         android:layout_width="141dp"
@@ -17,5 +30,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.533"
         app:srcCompat="@mipmap/play" />
+
+    <TextView
+        android:id="@+id/play_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="@string/play"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/play_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
