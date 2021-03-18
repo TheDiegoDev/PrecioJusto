@@ -6,6 +6,6 @@ import retrofit2.http.*
 
 
 interface ObjectService {
-    @GET("")
+    @GET("precioJusto.json?dl=1")
     fun listObject() : Call<ObjectsPrice>
 }
