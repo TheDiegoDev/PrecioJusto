@@ -1,7 +1,9 @@
-package diego.guinea.preciojusto.data.local
+package diego.guinea.preciojusto.utils
 
 
 const val PrincipalRepo = "https://www.dropbox.com/s/osz2g6reqb2muci/"
+
+val VideoFondo = "https://www.dropbox.com/s/gb37mgtosy48pc3/fondoApp.mp4?dl=1"
 
 const val LLamadaDB =
     "CREATE TABLE persons(id int(4)," + "name varchar(100),"+

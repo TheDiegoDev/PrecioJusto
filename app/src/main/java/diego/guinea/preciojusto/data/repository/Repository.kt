@@ -2,7 +2,7 @@ package diego.guinea.preciojusto.data.repository
 
 
 import RetrofitInitializer
-import diego.guinea.preciojusto.data.local.PrincipalRepo
+import diego.guinea.preciojusto.utils.PrincipalRepo
 import diego.guinea.preciojusto.data.modelo.ObjectsPrice
 import diego.guinea.preciojusto.utils.BaseCallback
 import retrofit2.Call

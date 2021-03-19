@@ -1,18 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@android:color/white">
+
+<!--    <diego.guinea.preciojusto.ui.presenter.ExoPlayerView-->
+<!--        android:id="@+id/videoDeFondo"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="right"-->
+<!--        android:background="@color/exo_edit_mode_background_color"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--    </diego.guinea.preciojusto.ui.presenter.ExoPlayerView>-->
+
+    <ImageView
+        android:id="@+id/play_button"
+        android:layout_width="141dp"
+        android:layout_height="159dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.533"
+        app:srcCompat="@mipmap/play" />
 
     <TextView
-        android:id="@+id/prueba"
-        android:layout_width="81dp"
+        android:id="@+id/play_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pantalla 1"
+        android:fontFamily="casual"
+        android:text="@string/play"
+        android:textColor="@android:color/background_dark"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/play_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/settings_button"
+        android:layout_width="58dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/settings" />
+
+    <ImageView
+        android:id="@+id/coinGif"
+        android:layout_width="105dp"
+        android:layout_height="148dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="57dp"
+        app:layout_constraintBottom_toTopOf="@+id/play_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_button"
+        app:srcCompat="@mipmap/dollar"
+        tools:srcCompat="@mipmap/dollar" />
+
+    <ImageView
+        android:id="@+id/coinGif2"
+        android:layout_width="191dp"
+        android:layout_height="142dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="54dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/play_button"
+        app:srcCompat="@mipmap/dollar"
+        tools:srcCompat="@mipmap/dollar" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package diego.guinea.preciojusto.ui
+package diego.guinea.preciojusto.ui.firstPage
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
