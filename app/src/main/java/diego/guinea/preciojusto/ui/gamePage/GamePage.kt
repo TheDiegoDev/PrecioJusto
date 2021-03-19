@@ -3,9 +3,12 @@ package diego.guinea.preciojusto.ui.gamePage
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import diego.guinea.preciojusto.R
+import org.koin.android.ext.android.inject
 
 
 class GamePage : AppCompatActivity() {
+
+    private val viewModel by inject<GamePageViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
