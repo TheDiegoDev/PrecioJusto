@@ -55,5 +55,35 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/settings" />
 
+    <ImageView
+        android:id="@+id/coinGif"
+        android:layout_width="105dp"
+        android:layout_height="148dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="57dp"
+        app:layout_constraintBottom_toTopOf="@+id/play_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_button"
+        app:srcCompat="@mipmap/dollar"
+        tools:srcCompat="@mipmap/dollar" />
+
+    <ImageView
+        android:id="@+id/coinGif2"
+        android:layout_width="191dp"
+        android:layout_height="142dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="54dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/play_button"
+        app:srcCompat="@mipmap/dollar"
+        tools:srcCompat="@mipmap/dollar" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
