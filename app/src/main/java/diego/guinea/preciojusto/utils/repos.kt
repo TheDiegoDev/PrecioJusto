@@ -1,7 +1,7 @@
 package diego.guinea.preciojusto.utils
 
 
-const val PrincipalRepo = "https://www.dropbox.com/s/osz2g6reqb2muci/"
+const val PrincipalRepo = "https://www.dropbox.com/s/"
 
 val VideoFondo = "https://www.dropbox.com/s/gb37mgtosy48pc3/fondoApp.mp4?dl=1"
 
