@@ -1,4 +1,6 @@
-
+ext {
+    logginginterceptorVersion = '3.1.0'
+}
 buildscript {
     ext.kotlin_version = "1.4.21"
     repositories {

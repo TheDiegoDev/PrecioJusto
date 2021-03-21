@@ -2,12 +2,14 @@ package diego.guinea.preciojusto.ui.gamePage
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import diego.guinea.preciojusto.data.modelo.ObjectsPJ
 import diego.guinea.preciojusto.data.modelo.ObjectsPrice
 import diego.guinea.preciojusto.utils.BaseCallback
 
 
+
 class GamePageViewModel: ViewModel() {
-    private val repositorio = Single.Repository()
+    private val repositorio = Single.objectRepository()
     val valuesViewMLD = MutableLiveData<ObjectsPrice>()
     val errorViewMLD = MutableLiveData<Error>()
 
