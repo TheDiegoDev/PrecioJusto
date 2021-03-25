@@ -7,16 +7,45 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
+    <ImageView
+        android:id="@+id/imageObject"
+        android:layout_width="276dp"
+        android:layout_height="249dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
-        android:id="@+id/gameText"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pantalla de juego"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/textDescripcion"
+        android:layout_width="304dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageObject" />
 
+    <EditText
+        android:id="@+id/editTextPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDescripcion" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="173dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPrice"
+        tools:srcCompat="@mipmap/next" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
