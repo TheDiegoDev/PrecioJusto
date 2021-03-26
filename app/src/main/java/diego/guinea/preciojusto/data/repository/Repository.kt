@@ -22,7 +22,6 @@ class Repository() {
                     callback.onError(Error("esta vacio"))
                 } else {
                     callback.onResult(response.body()!!)
-                    print(response.body())
                 }
             }
             override fun onFailure(call: Call<ObjectsPrice>, t: Throwable) {

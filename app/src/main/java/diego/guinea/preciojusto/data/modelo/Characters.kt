@@ -11,7 +11,7 @@ data class ObjectsPJ(
     var descripcion: String?,
     var precio: String?) : Serializable
 
-class ObjectsPrice(var results: List<ObjectsPJ>)
+data class ObjectsPrice(var objetos: List<ObjectsPJ>)
 
 
 

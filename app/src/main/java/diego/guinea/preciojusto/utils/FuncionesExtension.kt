@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import androidx.core.graphics.drawable.toDrawable
 import diego.guinea.preciojusto.R
+import kotlin.random.Random
 
 //
 //fun Context.showLoadingDialog(): Dialog{
@@ -18,5 +19,6 @@ import diego.guinea.preciojusto.R
 //            return it
 //        }
 //    }
+
 
 
