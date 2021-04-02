@@ -1,12 +1,8 @@
 package diego.guinea.preciojusto.ui.gamePage
 
 import android.app.Dialog
-import android.graphics.Color
-import android.graphics.ColorFilter
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
-import android.provider.CalendarContract
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -32,7 +28,6 @@ class GamePage : AppCompatActivity() {
         setViewinivsible()
         viewModel.getAllData()
         observer()
-
     }
 
     private fun setViewinivsible() {
@@ -49,22 +44,23 @@ class GamePage : AppCompatActivity() {
           getData(it)
         })
     }
+    private fun hideLoading() {
+        loadingDialog?.let { if (it.isShowing) it.cancel() }
+    }
+
+    private fun showDialog() {
+        hideLoading()
+        loadingDialog = this.showLoadingDialog()
+        Handler().postDelayed({
+            hideLoading()
+        }, 2000)
+    }
 
     private fun getData(it: ObjectsPrice) {
         pjObject.addAll(it.objetos)
         prepareBackgroud()
     }
-    private fun showDialog() {
-        hideLoading()
-        loadingDialog = showLoadingDialog()
-        Handler().postDelayed({
-            hideLoading()
-        }, 2000)
 
-    }
-    private fun hideLoading() {
-        loadingDialog?.let { if (it.isShowing) it.cancel() }
-    }
     private fun prepareBackgroud() {
         progressBar.visibility = View.INVISIBLE
         imageObject.visibility = View.VISIBLE
@@ -85,9 +81,8 @@ class GamePage : AppCompatActivity() {
             if(editTextPrice.text.toString() == pjObject[randomNum].precio){
                 prepareBackgroud()
             }else{
-              // showDialog()
+                showDialog()
             }
-
         }
     }
 }
