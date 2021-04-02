@@ -24,30 +24,16 @@ class HomeActivity : AppCompatActivity() {
         prepareBackground()
     }
 
-//    override fun onPause() {
-//        super.onPause()
-//        videoDeFondo.onPause()
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        videoDeFondo.onResume()
-//    }
-
     private fun prepareBackground() {
-//        //val fondo = findViewById<ExoPlayerView>(R.id.videoDeFondo)
         val playButton = findViewById<ImageView>(R.id.play_button)
         val settingsButton = findViewById<ImageView>(R.id.settings_button)
-        val coin_one = findViewById<ImageView>(R.id.coinGif)
-        val coin_two = findViewById<ImageView>(R.id.coinGif2)
-        val cont = 0
 
         val valueAnimator = ValueAnimator.ofFloat(0f,360f)
 
         valueAnimator.addUpdateListener {
             val value = it.animatedValue as Float
-            coin_one.rotation = value
-            coin_two.rotation = value
+            coinGif.rotation = value
+            coinGif2.rotation = value
         }
 
         valueAnimator.interpolator = LinearInterpolator()
@@ -64,8 +50,6 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-        //fondo.prepare(Uri.parse(VideoFondo))
     }
 }
 

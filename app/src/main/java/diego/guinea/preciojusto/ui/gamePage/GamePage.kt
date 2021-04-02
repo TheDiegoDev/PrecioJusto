@@ -1,6 +1,12 @@
 package diego.guinea.preciojusto.ui.gamePage
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.os.Handler
+import android.provider.CalendarContract
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -8,6 +14,7 @@ import com.bumptech.glide.Glide
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.ObjectsPJ
 import diego.guinea.preciojusto.data.modelo.ObjectsPrice
+import diego.guinea.preciojusto.utils.showLoadingDialog
 import kotlinx.android.synthetic.main.activity_game.*
 import org.koin.android.ext.android.inject
 import kotlin.random.Random
@@ -17,6 +24,7 @@ class GamePage : AppCompatActivity() {
 
     private val viewModel by inject<GamePageViewModel>()
     private val pjObject: ArrayList<ObjectsPJ> = arrayListOf()
+    private var loadingDialog: Dialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +32,7 @@ class GamePage : AppCompatActivity() {
         setViewinivsible()
         viewModel.getAllData()
         observer()
+
     }
 
     private fun setViewinivsible() {
@@ -45,7 +54,17 @@ class GamePage : AppCompatActivity() {
         pjObject.addAll(it.objetos)
         prepareBackgroud()
     }
+    private fun showDialog() {
+        hideLoading()
+        loadingDialog = showLoadingDialog()
+        Handler().postDelayed({
+            hideLoading()
+        }, 2000)
 
+    }
+    private fun hideLoading() {
+        loadingDialog?.let { if (it.isShowing) it.cancel() }
+    }
     private fun prepareBackgroud() {
         progressBar.visibility = View.INVISIBLE
         imageObject.visibility = View.VISIBLE
@@ -63,6 +82,11 @@ class GamePage : AppCompatActivity() {
         textDescripcion.text = pjObject[randomNum].descripcion
 
         imageNext.setOnClickListener {
+            if(editTextPrice.text.toString() == pjObject[randomNum].precio){
+                prepareBackgroud()
+            }else{
+              // showDialog()
+            }
 
         }
     }
