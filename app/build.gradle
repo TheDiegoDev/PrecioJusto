@@ -67,5 +67,8 @@ dependencies {
     implementation 'org.koin:koin-android-scope:2.2.0'
     implementation 'org.koin:koin-android-viewmodel:2.2.0'
 
+    //Lottie
+    implementation 'com.airbnb.android:lottie:3.4.4'
+
 
 }
