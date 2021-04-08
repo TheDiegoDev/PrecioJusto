@@ -3,6 +3,9 @@ package diego.guinea.preciojusto.utils
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import androidx.core.graphics.drawable.toDrawable
 import diego.guinea.preciojusto.R
 
@@ -28,6 +31,15 @@ fun Context.showCheckDialog(): Dialog{
         it.setCancelable(false)
         it.setCanceledOnTouchOutside(false)
         return it
+    }
+}
+
+fun Context.vibrate(){
+    val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE))
+    } else {
+        v.vibrate(500)
     }
 }
 

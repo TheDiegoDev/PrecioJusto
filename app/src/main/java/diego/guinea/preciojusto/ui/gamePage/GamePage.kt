@@ -1,9 +1,9 @@
 package diego.guinea.preciojusto.ui.gamePage
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
+import android.os.*
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -13,9 +13,9 @@ import diego.guinea.preciojusto.data.modelo.ObjectsPJ
 import diego.guinea.preciojusto.data.modelo.ObjectsPrice
 import diego.guinea.preciojusto.utils.showCheckDialog
 import diego.guinea.preciojusto.utils.showWrongDialog
+import diego.guinea.preciojusto.utils.vibrate
 import kotlinx.android.synthetic.main.activity_game.*
 import org.koin.android.ext.android.inject
-import kotlin.random.Random
 
 
 class GamePage : AppCompatActivity() {
@@ -40,11 +40,12 @@ class GamePage : AppCompatActivity() {
         textDescripcion.visibility = View.INVISIBLE
         editTextPrice.visibility = View.INVISIBLE
         imageNext.visibility = View.INVISIBLE
+        textPoints.visibility = View.INVISIBLE
     }
 
     private fun observer() {
         viewModel.valuesViewMLD.observe(this, Observer {
-          getData(it)
+            getData(it)
         })
     }
     private fun hideLoading() {
@@ -73,7 +74,6 @@ class GamePage : AppCompatActivity() {
     private fun prepareBackgroud() {
         visibleView()
 
-
         if (cont >= pjObject.size){
             val intent = Intent(this, WinPage::class.java)
             startActivity(intent)
@@ -83,13 +83,11 @@ class GamePage : AppCompatActivity() {
                 .into(imageObject)
             textNameObject.text = pjObject[cont].name
             textDescripcion.text = pjObject[cont].descripcion
-
         }
 
         imageNext.setOnClickListener {
             imageClick(cont)
         }
-
     }
 
     private fun visibleView() {
@@ -99,6 +97,7 @@ class GamePage : AppCompatActivity() {
         textDescripcion.visibility = View.VISIBLE
         editTextPrice.visibility = View.VISIBLE
         imageNext.visibility = View.VISIBLE
+        textPoints.visibility = View.VISIBLE
     }
 
     private fun imageClick(num: Int) {
@@ -106,12 +105,12 @@ class GamePage : AppCompatActivity() {
             cont++
             showCheck()
             prepareBackgroud()
+            textPoints.text = cont.toString()
             editTextPrice.setText("")
         } else {
+            this.vibrate()
             showDialog()
             editTextPrice.setText("")
         }
     }
-
-
 }
