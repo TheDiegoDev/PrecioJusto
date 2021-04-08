@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageObject"
-        android:layout_width="276dp"
-        android:layout_height="249dp"
+        android:layout_width="257dp"
+        android:layout_height="222dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -21,7 +21,9 @@
         android:id="@+id/textDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
         android:gravity="center"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,12 +36,12 @@
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="#42DD00"
+        android:backgroundTint="#009688"
         android:ems="10"
-        android:textColorHint="@color/black"
         android:hint="@string/editTextPrice"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textColor="#000000"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textDescripcion" />
@@ -76,5 +78,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textPoints"
+        android:layout_width="92dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="28dp"
+        android:textSize="50sp"
+        android:fontFamily="@font/creepster"
+        android:gravity="center"
+        android:text="@string/contador"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

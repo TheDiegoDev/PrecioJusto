@@ -3,12 +3,15 @@ package diego.guinea.preciojusto.utils
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import androidx.core.graphics.drawable.toDrawable
 import diego.guinea.preciojusto.R
 
 
 
-fun Context.showLoadingDialog(): Dialog{
+fun Context.showWrongDialog(): Dialog{
         val progressDialog = Dialog(this)
         progressDialog.let {
             it.show()
@@ -19,6 +22,26 @@ fun Context.showLoadingDialog(): Dialog{
             return it
         }
     }
+fun Context.showCheckDialog(): Dialog{
+    val progressDialog = Dialog(this)
+    progressDialog.let {
+        it.show()
+        it.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+        it.setContentView(R.layout.progressgood_dialog)
+        it.setCancelable(false)
+        it.setCanceledOnTouchOutside(false)
+        return it
+    }
+}
+
+fun Context.vibrate(){
+    val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE))
+    } else {
+        v.vibrate(500)
+    }
+}
 
 
 
