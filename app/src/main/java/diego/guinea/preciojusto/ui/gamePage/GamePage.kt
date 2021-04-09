@@ -1,10 +1,11 @@
 package diego.guinea.preciojusto.ui.gamePage
 
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.*
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
@@ -16,6 +17,9 @@ import diego.guinea.preciojusto.utils.showWrongDialog
 import diego.guinea.preciojusto.utils.vibrate
 import kotlinx.android.synthetic.main.activity_game.*
 import org.koin.android.ext.android.inject
+import java.util.*
+import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 
 class GamePage : AppCompatActivity() {
@@ -31,10 +35,30 @@ class GamePage : AppCompatActivity() {
         setViewinivsible()
         viewModel.getAllData()
         observer()
+
+    }
+    private fun setTimerOn(){
+        val text = findViewById<TextView>(R.id.textCountDown)
+        val duration = TimeUnit.MINUTES.toMillis(10)
+
+        object : CountDownTimer(duration, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val sDuration = String.format(Locale.ENGLISH, "%02d : %02d"
+                    ,TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
+                    ,TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)))
+                text.text = sDuration
+            }
+
+            override fun onFinish() {
+                winPageIntent()
+            }
+        }.start()
     }
 
     private fun setViewinivsible() {
         progressBar.visibility = View.VISIBLE
+        textCountDown.visibility = View.INVISIBLE
         imageObject.visibility = View.INVISIBLE
         textNameObject.visibility = View.INVISIBLE
         textDescripcion.visibility = View.INVISIBLE
@@ -75,8 +99,7 @@ class GamePage : AppCompatActivity() {
         visibleView()
 
         if (cont >= pjObject.size){
-            val intent = Intent(this, WinPage::class.java)
-            startActivity(intent)
+            winPageIntent()
         }else{
             Glide.with(imageObject.context)
                 .load(pjObject[cont].foto)
@@ -90,7 +113,14 @@ class GamePage : AppCompatActivity() {
         }
     }
 
+    private fun winPageIntent() {
+        val intent = Intent(this, WinPage::class.java)
+        intent.putExtra("numCont", "$cont")
+        startActivity(intent)
+    }
+
     private fun visibleView() {
+        textCountDown.visibility = View.VISIBLE
         progressBar.visibility = View.INVISIBLE
         imageObject.visibility = View.VISIBLE
         textNameObject.visibility = View.VISIBLE
@@ -98,6 +128,7 @@ class GamePage : AppCompatActivity() {
         editTextPrice.visibility = View.VISIBLE
         imageNext.visibility = View.VISIBLE
         textPoints.visibility = View.VISIBLE
+        setTimerOn()
     }
 
     private fun imageClick(num: Int) {
@@ -105,10 +136,12 @@ class GamePage : AppCompatActivity() {
             cont++
             showCheck()
             prepareBackgroud()
-            textPoints.text = cont.toString()
+            "WINS: ${this.cont}".also { textPoints.text = it }
+            textPoints.setTextColor(Color.GREEN)
             editTextPrice.setText("")
         } else {
             this.vibrate()
+            textPoints.setTextColor(Color.RED)
             showDialog()
             editTextPrice.setText("")
         }

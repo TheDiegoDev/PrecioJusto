@@ -3,5 +3,5 @@
     <string name="play">Play</string>
     <string name="settings">Ajustes</string>
     <string name="editTextPrice">Pon el precio aqui</string>
-    <string name="contador">0</string>
+    <string name="contador">WINS: 0</string>
 </resources>
