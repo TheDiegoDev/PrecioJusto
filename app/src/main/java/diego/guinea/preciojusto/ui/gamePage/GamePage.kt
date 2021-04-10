@@ -7,8 +7,11 @@ import android.os.*
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
+import androidx.core.view.forEach
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
+import com.google.android.material.chip.Chip
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.ObjectsPJ
 import diego.guinea.preciojusto.data.modelo.ObjectsPrice
@@ -28,6 +31,8 @@ class GamePage : AppCompatActivity() {
     private val pjObject: ArrayList<ObjectsPJ> = arrayListOf()
     private var loadingDialog: Dialog? = null
     private var cont = 0
+    private var mCountDown: CountDownTimer? = null
+    lateinit var chip: Chip
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +44,14 @@ class GamePage : AppCompatActivity() {
     }
     private fun setTimerOn(){
         val text = findViewById<TextView>(R.id.textCountDown)
-        val duration = TimeUnit.MINUTES.toMillis(10)
+        val duration = TimeUnit.MINUTES.toMillis(2)
 
-        object : CountDownTimer(duration, 1000) {
+        mCountDown = object : CountDownTimer(duration, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val sDuration = String.format(Locale.ENGLISH, "%02d : %02d"
                     ,TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
                     ,TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
-                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)))
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)))
                 text.text = sDuration
             }
 
@@ -54,6 +59,7 @@ class GamePage : AppCompatActivity() {
                 winPageIntent()
             }
         }.start()
+
     }
 
     private fun setViewinivsible() {
@@ -62,7 +68,7 @@ class GamePage : AppCompatActivity() {
         imageObject.visibility = View.INVISIBLE
         textNameObject.visibility = View.INVISIBLE
         textDescripcion.visibility = View.INVISIBLE
-        editTextPrice.visibility = View.INVISIBLE
+        chipGroup.visibility = View.INVISIBLE
         imageNext.visibility = View.INVISIBLE
         textPoints.visibility = View.INVISIBLE
     }
@@ -97,7 +103,8 @@ class GamePage : AppCompatActivity() {
 
     private fun prepareBackgroud() {
         visibleView()
-
+        mCountDown?.cancel()
+        setTimerOn()
         if (cont >= pjObject.size){
             winPageIntent()
         }else{
@@ -125,25 +132,31 @@ class GamePage : AppCompatActivity() {
         imageObject.visibility = View.VISIBLE
         textNameObject.visibility = View.VISIBLE
         textDescripcion.visibility = View.VISIBLE
-        editTextPrice.visibility = View.VISIBLE
+        chipGroup.visibility = View.VISIBLE
         imageNext.visibility = View.VISIBLE
         textPoints.visibility = View.VISIBLE
-        setTimerOn()
     }
 
     private fun imageClick(num: Int) {
-        if (editTextPrice.text.toString() == pjObject[num].precio) {
-            cont++
-            showCheck()
-            prepareBackgroud()
-            "WINS: ${this.cont}".also { textPoints.text = it }
-            textPoints.setTextColor(Color.GREEN)
-            editTextPrice.setText("")
-        } else {
-            this.vibrate()
-            textPoints.setTextColor(Color.RED)
-            showDialog()
-            editTextPrice.setText("")
+        val selectChipp = getChipSelected(chipGroup.checkedChipId)
+        
+//        if (chipGroup.checkedChipId. == pjObject[num].precio) {
+//            cont++
+//            showCheck()
+//            prepareBackgroud()
+//            "WINS: ${this.cont}".also { textPoints.text = it }
+//            textPoints.setTextColor(Color.GREEN)
+//        } else {
+//            this.vibrate()
+//            textPoints.setTextColor(Color.RED)
+//            showDialog()
+//        }
+    }
+
+    private fun getChipSelected(checkedChipId: Int): View {
+        chipGroup.children.forEach {
+                chip = it as Chip
         }
+        return  chip
     }
 }
