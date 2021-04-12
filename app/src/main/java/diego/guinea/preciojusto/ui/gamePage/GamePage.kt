@@ -171,6 +171,7 @@ class GamePage : AppCompatActivity() {
     private fun winPageIntent() {
         val intent = Intent(this, WinPage::class.java)
         intent.putExtra("numCont", "$cont")
+        intent.putExtra("numLives", "$contError")
         startActivity(intent)
     }
 
