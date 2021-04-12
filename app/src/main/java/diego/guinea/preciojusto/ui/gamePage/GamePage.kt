@@ -30,6 +30,7 @@ class GamePage : AppCompatActivity() {
     private val pjObject: ArrayList<ObjectsPJ> = arrayListOf()
     private var loadingDialog: Dialog? = null
     private var cont = 0
+    private var contError = 2
     private var mCountDown: CountDownTimer? = null
     lateinit var chip: Chip
 
@@ -186,21 +187,30 @@ class GamePage : AppCompatActivity() {
 
     private fun imageClick(num: Int) {
         val textChipSelected = getChipSelected(chipGroup.checkedChipId)
-        if (textChipSelected == pjObject[num].precio) {
-            cont++
-            showCheck()
-            prepareBackgroud()
-            "WINS: ${this.cont}".also { textPoints.text = it }
-            textPoints.setTextColor(Color.GREEN)
-        } else {
-            this.vibrate()
-            textPoints.setTextColor(Color.RED)
-            showDialog()
-        }
-        for (i in 0 until chipGroup.childCount) {
-            val chip = chipGroup.getChildAt(i) as Chip
-            chip.isChecked = false
-        }
+
+            if (textChipSelected == pjObject[num].precio) {
+                cont++
+                showCheck()
+                prepareBackgroud()
+                "WINS: ${this.cont}\n LIVES: $contError".also { textPoints.text = it }
+                textPoints.setTextColor(Color.GREEN)
+            } else {
+                contError--
+                if (contError == 0){
+                    winPageIntent()
+                }else{
+                    "WINS: ${this.cont}\n LIVES: $contError".also { textPoints.text = it }
+                    this.vibrate()
+                    textPoints.setTextColor(Color.RED)
+                    showDialog()
+                }
+
+            }
+            for (i in 0 until chipGroup.childCount) {
+                val chip = chipGroup.getChildAt(i) as Chip
+                chip.isChecked = false
+            }
+
     }
 
     private fun getChipSelected(checkedChipId: Int): String {

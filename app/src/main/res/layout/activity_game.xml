@@ -89,10 +89,10 @@
         android:layout_height="84dp"
         android:fontFamily="@font/creepster"
         android:gravity="center"
-        android:text="@string/contador"
         android:textAlignment="center"
+        android:text="@string/contador"
         android:textColor="@color/green"
-        android:textSize="50sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -102,7 +102,6 @@
         android:layout_height="82dp"
         android:fontFamily="@font/creepster"
         android:gravity="center"
-        android:text="10:00"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="50sp"
@@ -123,8 +122,8 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPriceOne"
             style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:background="@color/black"
             android:button="@android:drawable/divider_horizontal_bright"
             android:textAlignment="center"
@@ -135,8 +134,8 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPriceTwo"
             style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:background="@color/black"
             android:button="@android:drawable/divider_horizontal_bright"
             android:textAlignment="center"
@@ -147,8 +146,8 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPriceThree"
             style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:background="@color/black"
             android:button="@android:drawable/divider_horizontal_bright"
             android:textAlignment="center"
