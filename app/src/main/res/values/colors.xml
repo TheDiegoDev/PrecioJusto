@@ -8,4 +8,6 @@
     <color name="black">#000000</color>
     <color name="red">#FFF60909</color>
     <color name="green">#008000</color>
+    <color name="chip">#00BCD4</color>
+    <color name="greenChip">#4CAF50</color>
 </resources>

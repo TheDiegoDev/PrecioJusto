@@ -3,6 +3,6 @@
     <string name="play">Play</string>
     <string name="settings">Ajustes</string>
     <string name="editTextPrice">Pon el precio aqui</string>
-    <string name="contador">WINS: 0</string>
+    <string name="contador">WINS: 0\n LIVES: 2</string>
     <string name="textPrueba">TEXTO DE PRUEBA</string>
 </resources>
