@@ -104,6 +104,7 @@ class GamePage : AppCompatActivity() {
             }
 
             override fun onFinish() {
+                contError = 0
                 winPageIntent()
             }
         }.start()
