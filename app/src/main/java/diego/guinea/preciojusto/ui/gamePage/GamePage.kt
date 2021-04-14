@@ -143,6 +143,11 @@ class GamePage : AppCompatActivity() {
             hideLoading()
         }, 2000)
     }
+    private fun stopAnimacion() {
+        Handler().postDelayed({
+            hideLoading()
+        }, 1)
+    }
     private fun getData(it: ObjectsPrice) {
         pjObject.addAll(it.objetos)
         prepareBackgroud()
@@ -169,6 +174,7 @@ class GamePage : AppCompatActivity() {
     }
 
     private fun winPageIntent() {
+        stopAnimacion()
         val intent = Intent(this, WinPage::class.java)
         intent.putExtra("numCont", "$cont")
         intent.putExtra("numLives", "$contError")

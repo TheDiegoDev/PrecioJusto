@@ -26,14 +26,14 @@ class WinPage: AppCompatActivity() {
         loadingDialog = this.showWinDialog()
         Handler().postDelayed({
             hideLoading()
-        }, 2000)
+        }, 3000)
     }
     private fun showLosePage(){
         hideLoading()
         loadingDialog = this.showLoseDilog()
         Handler().postDelayed({
             hideLoading()
-        }, 2000)
+        }, 3000)
     }
     private fun setBackground() {
         val points = intent.getStringExtra("numCont").toString()
@@ -41,9 +41,10 @@ class WinPage: AppCompatActivity() {
 
         if (lives == "0"){
             showLosePage()
+            textContWins.text = "Loser you score are $points"
         }else{
             showWinPage()
-            textContWins.text = points
+            textContWins.text = "Winner you score are $points"
         }
     }
 }
