@@ -33,6 +33,28 @@ fun Context.showCheckDialog(): Dialog{
         return it
     }
 }
+fun Context.showWinDialog(): Dialog{
+    val progressDialog = Dialog(this)
+    progressDialog.let {
+        it.show()
+        it.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+        it.setContentView(R.layout.progress_win_dialog)
+        it.setCancelable(false)
+        it.setCanceledOnTouchOutside(false)
+        return it
+    }
+}
+fun Context.showLoseDilog(): Dialog{
+    val progressDialog = Dialog(this)
+    progressDialog.let {
+        it.show()
+        it.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+        it.setContentView(R.layout.progress_lose_dialog)
+        it.setCancelable(false)
+        it.setCanceledOnTouchOutside(false)
+        return it
+    }
+}
 
 fun Context.vibrate(){
     val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
