@@ -2,18 +2,13 @@ package diego.guinea.preciojusto.ui.firstPage
 
 import android.animation.ValueAnimator
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
-import android.widget.TextView
 import diego.guinea.preciojusto.R
-import diego.guinea.preciojusto.ui.gamePage.GamePage
-import diego.guinea.preciojusto.ui.presenter.ExoPlayerView
+import diego.guinea.preciojusto.ui.gameLevels.ChoseGame
 import diego.guinea.preciojusto.ui.settings.Settings
-import diego.guinea.preciojusto.utils.VideoFondo
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -42,7 +37,8 @@ class HomeActivity : AppCompatActivity() {
         valueAnimator.start()
 
         playButton.setOnClickListener{
-            val intent = Intent(this, GamePage::class.java)
+            //val intent = Intent(this, GamePage::class.java)
+            val intent = Intent(this, ChoseGame::class.java)
             startActivity(intent)
         }
         settingsButton.setOnClickListener {
