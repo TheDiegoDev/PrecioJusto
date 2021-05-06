@@ -40,8 +40,8 @@ class GamePage : AppCompatActivity() {
         setViewinivsible()
         viewModel.getAllData()
         observer()
-
     }
+
     private fun setPriceChip(){
 
         val numValues: ArrayList<String> = arrayListOf()
@@ -152,6 +152,11 @@ class GamePage : AppCompatActivity() {
     private fun getData(it: ObjectsPrice) {
         pjObject.addAll(it.objetos)
         prepareBackgroud()
+    }
+
+    override fun onBackPressed() {
+        mCountDown?.cancel()
+        super.onBackPressed()
     }
 
     private fun prepareBackgroud() {
