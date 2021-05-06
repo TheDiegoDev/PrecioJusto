@@ -1,6 +1,7 @@
 package diego.guinea.preciojusto.ui.presenter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.AlphaChar
+import diego.guinea.preciojusto.ui.gamePage.GamePage
 
 
 class AlphaAdapters(var context: Context, var arrayList: ArrayList<AlphaChar>) : RecyclerView.Adapter<AlphaAdapters.ItemHolder>() {
@@ -26,8 +28,10 @@ class AlphaAdapters(var context: Context, var arrayList: ArrayList<AlphaChar>) :
         alphaChar.iconChar?.let { holder.icons.setImageResource(it) }
         holder.alphas.text = alphaChar.alphaChar
 
-        holder.alphas.setOnClickListener{
-            Toast.makeText(context,alphaChar.alphaChar, Toast.LENGTH_LONG).show()
+        holder.icons.setOnClickListener{
+            val intent = Intent(context, GamePage::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+            context.startActivity(intent)
         }
     }
 

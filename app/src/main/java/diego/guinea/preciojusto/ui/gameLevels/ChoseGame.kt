@@ -35,10 +35,11 @@ class ChoseGame : AppCompatActivity() {
 
     private fun setDataInList():ArrayList<AlphaChar>{
 
-        var items: ArrayList<AlphaChar> = ArrayList()
+        val items: ArrayList<AlphaChar> = ArrayList()
 
-        items.add(AlphaChar(R.mipmap.coin, "Titulo 1"))
-        items.add(AlphaChar(R.mipmap.diana, "Titulo 2"))
+
+        items.add(AlphaChar(R.mipmap.one, "Nivel 1"))
+        items.add(AlphaChar(R.mipmap.two, "Nivel 2"))
 
         return items
     }
