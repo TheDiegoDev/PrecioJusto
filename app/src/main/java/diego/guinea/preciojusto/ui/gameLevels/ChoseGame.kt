@@ -38,8 +38,15 @@ class ChoseGame : AppCompatActivity() {
         val items: ArrayList<AlphaChar> = ArrayList()
 
 
-        items.add(AlphaChar(R.mipmap.one, "Nivel 1"))
-        items.add(AlphaChar(R.mipmap.two, "Nivel 2"))
+        items.add(AlphaChar(R.mipmap.uno, "Nivel 1"))
+        items.add(AlphaChar(R.mipmap.dos, "Nivel 2"))
+        items.add(AlphaChar(R.mipmap.tres, "Nivel 3"))
+        items.add(AlphaChar(R.mipmap.cuatro, "Nivel 4"))
+        items.add(AlphaChar(R.mipmap.cinco, "Nivel 5"))
+        items.add(AlphaChar(R.mipmap.seis, "Nivel 6"))
+        items.add(AlphaChar(R.mipmap.siete, "Nivel 7"))
+        items.add(AlphaChar(R.mipmap.ocho, "Nivel 8"))
+        items.add(AlphaChar(R.mipmap.nueve, "Nivel 9"))
 
         return items
     }
