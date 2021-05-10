@@ -6,16 +6,13 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/btnSound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pantalla de ajustes"
-        android:textColor="@color/black"
+        android:text="Sound Off"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
