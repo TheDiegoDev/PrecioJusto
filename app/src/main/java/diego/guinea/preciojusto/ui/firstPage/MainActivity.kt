@@ -9,13 +9,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import diego.guinea.preciojusto.R
 
+
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSplash()
-
     }
+
+
 
     private fun setSplash() {
         val animationTop = AnimationUtils.loadAnimation(this, R.anim.animacion_top)

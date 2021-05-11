@@ -3,13 +3,14 @@ package diego.guinea.preciojusto.utils
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import androidx.core.graphics.drawable.toDrawable
 import diego.guinea.preciojusto.R
 
-
+//private lateinit var mp: MediaPlayer
 
 fun Context.showWrongDialog(): Dialog{
         val progressDialog = Dialog(this)
@@ -64,6 +65,18 @@ fun Context.vibrate(){
         v.vibrate(500)
     }
 }
+//fun Context.backgroundSound(){
+//    mp = MediaPlayer.create(this, R.raw.preciojusto)
+//    mp.isLooping = true
+//    mp.setVolume(100f, 100f)
+//    mp.start()
+//}
+//fun stopMusic(){
+//    mp.stop()
+//}
+//fun isMusicPlaying(): Boolean {
+//    return mp.isPlaying
+//}
 
 
 
