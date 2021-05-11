@@ -22,17 +22,10 @@ class HomeActivity : AppCompatActivity() {
         prepareBackground()
     }
 
-    override fun onStop() {
-        if (mp.isPlaying){
-            mp.stop()
-        }
-        super.onStop()
-    }
-
-    override fun onResume() {
-        BackgroundSound()
-        super.onResume()
-    }
+//        override fun onStop() {
+//            super.onStop()
+//            mp.stop()
+//    }
 
     private fun BackgroundSound() {
         mp = MediaPlayer.create(this, R.raw.preciojusto)
@@ -40,6 +33,7 @@ class HomeActivity : AppCompatActivity() {
         mp.setVolume(100f, 100f)
         mp.start()
     }
+
     private fun prepareBackground() {
         val playButton = findViewById<ImageView>(R.id.play_button)
         val settingsButton = findViewById<ImageView>(R.id.settings_button)
@@ -68,10 +62,10 @@ class HomeActivity : AppCompatActivity() {
         }
         settingsButton.setOnClickListener {
             if (mp.isPlaying){
-                settingsButton.setImageDrawable(resources.getDrawable(R.mipmap.soundon))
+                settingsButton.setImageDrawable(resources.getDrawable(R.mipmap.soundoff))
                 mp.stop()
             }else{
-                settingsButton.setImageDrawable(resources.getDrawable(R.mipmap.soundoff))
+                settingsButton.setImageDrawable(resources.getDrawable(R.mipmap.soundon))
                 BackgroundSound()
             }
         }
