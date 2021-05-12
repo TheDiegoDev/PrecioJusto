@@ -3,6 +3,7 @@ package diego.guinea.preciojusto.ui.gamePage
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -33,6 +34,8 @@ class GamePage : AppCompatActivity() {
     private var contError = 2
     private var mCountDown: CountDownTimer? = null
     lateinit var chip: Chip
+    private var currentPositionSong: Int? = null
+    private lateinit var mp: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

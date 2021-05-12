@@ -11,27 +11,36 @@ import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.ui.gameLevels.ChoseGame
 import kotlinx.android.synthetic.main.activity_home.*
 
+
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var mp: MediaPlayer
+    private var currentPositionSong: Int? = null
+    private var songOffOn: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        BackgroundSound()
         prepareBackground()
     }
 
-//        override fun onStop() {
-//            super.onStop()
-//            mp.stop()
-//    }
+        override fun onStop() {
+            super.onStop()
+            mp.stop()
+    }
+
+    override fun onStart() {
+        super.onStart()
+            BackgroundSound()
+    }
 
     private fun BackgroundSound() {
         mp = MediaPlayer.create(this, R.raw.preciojusto)
         mp.isLooping = true
         mp.setVolume(100f, 100f)
-        mp.start()
+        if (songOffOn == 0) {
+            mp.start()
+        }
     }
 
     private fun prepareBackground() {
@@ -58,14 +67,19 @@ class HomeActivity : AppCompatActivity() {
     private fun btnClicks(playButton: ImageView, settingsButton: ImageView) {
         playButton.setOnClickListener {
             val intent = Intent(this, ChoseGame::class.java)
+            currentPositionSong = mp.currentPosition
+            intent.putExtra("song", currentPositionSong)
+            intent.putExtra("onoff", songOffOn)
             startActivity(intent)
         }
         settingsButton.setOnClickListener {
             if (mp.isPlaying){
                 settingsButton.setImageDrawable(resources.getDrawable(R.mipmap.soundoff))
+                songOffOn = 1
                 mp.stop()
             }else{
                 settingsButton.setImageDrawable(resources.getDrawable(R.mipmap.soundon))
+                songOffOn = 0
                 BackgroundSound()
             }
         }
