@@ -18,7 +18,7 @@ class ChoseGame : AppCompatActivity() {
     private var alphaAdapters: AlphaAdapters ? = null
     private lateinit var mp: MediaPlayer
     private var currentPositionSong: Int? = null
-    private var songOffOn: Int? = null
+    var songOffOn: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

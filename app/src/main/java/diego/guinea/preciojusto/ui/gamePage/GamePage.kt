@@ -36,13 +36,34 @@ class GamePage : AppCompatActivity() {
     lateinit var chip: Chip
     private var currentPositionSong: Int? = null
     private lateinit var mp: MediaPlayer
+    private var songOffOn: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+        songOffOn = intent.getIntExtra("onoff", 0)
         setViewinivsible()
         viewModel.getAllData()
         observer()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mp.stop()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        BackgroundSound()
+    }
+
+    private fun BackgroundSound() {
+        mp = MediaPlayer.create(this, R.raw.intriga)
+        mp.isLooping = true
+        mp.setVolume(100f, 100f)
+        if (songOffOn == 0) {
+            mp.start()
+        }
     }
 
     private fun setPriceChip(){
