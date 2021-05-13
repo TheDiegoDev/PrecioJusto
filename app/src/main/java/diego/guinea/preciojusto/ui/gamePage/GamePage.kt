@@ -3,6 +3,7 @@ package diego.guinea.preciojusto.ui.gamePage
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -15,6 +16,7 @@ import com.google.android.material.chip.Chip
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.ObjectsPJ
 import diego.guinea.preciojusto.data.modelo.ObjectsPrice
+import diego.guinea.preciojusto.utils.Sonido
 import diego.guinea.preciojusto.utils.showCheckDialog
 import diego.guinea.preciojusto.utils.showWrongDialog
 import diego.guinea.preciojusto.utils.vibrate
@@ -33,13 +35,36 @@ class GamePage : AppCompatActivity() {
     private var contError = 2
     private var mCountDown: CountDownTimer? = null
     lateinit var chip: Chip
+    private var currentPositionSong: Int? = null
+    private lateinit var mp: MediaPlayer
+    private var songOffOn: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+       // songOffOn = intent.getIntExtra("onoff", 0)
         setViewinivsible()
         viewModel.getAllData()
         observer()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mp.stop()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        BackgroundSound()
+    }
+
+    private fun BackgroundSound() {
+        mp = MediaPlayer.create(this, R.raw.intriga)
+        mp.isLooping = true
+        mp.setVolume(100f, 100f)
+        if (Sonido == 0) {
+            mp.start()
+        }
     }
 
     private fun setPriceChip(){

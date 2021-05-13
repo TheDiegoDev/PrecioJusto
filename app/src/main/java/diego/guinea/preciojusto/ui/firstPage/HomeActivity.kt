@@ -9,29 +9,39 @@ import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.ui.gameLevels.ChoseGame
+import diego.guinea.preciojusto.utils.Sonido
 import kotlinx.android.synthetic.main.activity_home.*
+
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var mp: MediaPlayer
+    private var currentPositionSong: Int? = null
+    //private var songOffOn: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        BackgroundSound()
         prepareBackground()
     }
 
-//        override fun onStop() {
-//            super.onStop()
-//            mp.stop()
-//    }
+        override fun onStop() {
+            super.onStop()
+            mp.stop()
+    }
+
+    override fun onStart() {
+        super.onStart()
+            BackgroundSound()
+    }
 
     private fun BackgroundSound() {
         mp = MediaPlayer.create(this, R.raw.preciojusto)
         mp.isLooping = true
         mp.setVolume(100f, 100f)
-        mp.start()
+        if (Sonido == 0) {
+            mp.start()
+        }
     }
 
     private fun prepareBackground() {
@@ -58,14 +68,19 @@ class HomeActivity : AppCompatActivity() {
     private fun btnClicks(playButton: ImageView, settingsButton: ImageView) {
         playButton.setOnClickListener {
             val intent = Intent(this, ChoseGame::class.java)
+            currentPositionSong = mp.currentPosition
+            intent.putExtra("song", currentPositionSong)
+           // intent.putExtra("onoff", Sonido)
             startActivity(intent)
         }
         settingsButton.setOnClickListener {
             if (mp.isPlaying){
                 settingsButton.setImageDrawable(resources.getDrawable(R.mipmap.soundoff))
+                Sonido = 1
                 mp.stop()
             }else{
                 settingsButton.setImageDrawable(resources.getDrawable(R.mipmap.soundon))
+                Sonido = 0
                 BackgroundSound()
             }
         }

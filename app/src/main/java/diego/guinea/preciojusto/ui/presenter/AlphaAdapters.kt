@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.AlphaChar
+import diego.guinea.preciojusto.ui.gameLevels.ChoseGame
 import diego.guinea.preciojusto.ui.gamePage.GamePage
 
 
@@ -23,14 +24,15 @@ class AlphaAdapters(var context: Context, var arrayList: ArrayList<AlphaChar>) :
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        var alphaChar: AlphaChar = arrayList[position]
+        val alphaChar: AlphaChar = arrayList[position]
 
         alphaChar.iconChar?.let { holder.icons.setImageResource(it) }
         holder.alphas.text = alphaChar.alphaChar
 
         holder.icons.setOnClickListener{
             val intent = Intent(context, GamePage::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            //intent.putExtra("onoff", sonido)
             context.startActivity(intent)
         }
     }

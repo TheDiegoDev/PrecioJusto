@@ -1,5 +1,6 @@
 package diego.guinea.preciojusto.ui.gameLevels
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.AlphaChar
 import diego.guinea.preciojusto.ui.presenter.AlphaAdapters
+import diego.guinea.preciojusto.utils.Sonido
 
 class ChoseGame : AppCompatActivity() {
 
@@ -15,11 +17,36 @@ class ChoseGame : AppCompatActivity() {
     private var gridLayoutManager: GridLayoutManager ? = null
     private var arrayList: ArrayList<AlphaChar> ? = null
     private var alphaAdapters: AlphaAdapters ? = null
+    private lateinit var mp: MediaPlayer
+    private var currentPositionSong: Int? = null
+    var songOffOn: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chose_levels)
+        currentPositionSong = intent.getIntExtra("song",0)
+       // songOffOn = intent.getIntExtra("onoff", 0)
         setConfigItems()
+
+    }
+    override fun onStop() {
+        super.onStop()
+        mp.stop()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        BackgroundSound()
+    }
+
+    private fun BackgroundSound() {
+        mp = MediaPlayer.create(this, R.raw.preciojusto)
+        mp.isLooping = true
+        mp.setVolume(100f, 100f)
+        currentPositionSong?.let { mp.seekTo(it) }
+        if (Sonido == 0) {
+            mp.start()
+        }
     }
 
     private fun setConfigItems(){
