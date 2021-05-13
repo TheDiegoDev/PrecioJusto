@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.AlphaChar
 import diego.guinea.preciojusto.ui.presenter.AlphaAdapters
+import diego.guinea.preciojusto.utils.Sonido
 
 class ChoseGame : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class ChoseGame : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chose_levels)
         currentPositionSong = intent.getIntExtra("song",0)
-        songOffOn = intent.getIntExtra("onoff", 0)
+       // songOffOn = intent.getIntExtra("onoff", 0)
         setConfigItems()
 
     }
@@ -43,7 +44,7 @@ class ChoseGame : AppCompatActivity() {
         mp.isLooping = true
         mp.setVolume(100f, 100f)
         currentPositionSong?.let { mp.seekTo(it) }
-        if (songOffOn == 0) {
+        if (Sonido == 0) {
             mp.start()
         }
     }

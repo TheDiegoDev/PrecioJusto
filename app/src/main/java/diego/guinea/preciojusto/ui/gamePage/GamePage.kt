@@ -16,6 +16,7 @@ import com.google.android.material.chip.Chip
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.ObjectsPJ
 import diego.guinea.preciojusto.data.modelo.ObjectsPrice
+import diego.guinea.preciojusto.utils.Sonido
 import diego.guinea.preciojusto.utils.showCheckDialog
 import diego.guinea.preciojusto.utils.showWrongDialog
 import diego.guinea.preciojusto.utils.vibrate
@@ -41,7 +42,7 @@ class GamePage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
-        songOffOn = intent.getIntExtra("onoff", 0)
+       // songOffOn = intent.getIntExtra("onoff", 0)
         setViewinivsible()
         viewModel.getAllData()
         observer()
@@ -61,7 +62,7 @@ class GamePage : AppCompatActivity() {
         mp = MediaPlayer.create(this, R.raw.intriga)
         mp.isLooping = true
         mp.setVolume(100f, 100f)
-        if (songOffOn == 0) {
+        if (Sonido == 0) {
             mp.start()
         }
     }

@@ -24,7 +24,7 @@ class AlphaAdapters(var context: Context, var arrayList: ArrayList<AlphaChar>) :
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        var alphaChar: AlphaChar = arrayList[position]
+        val alphaChar: AlphaChar = arrayList[position]
 
         alphaChar.iconChar?.let { holder.icons.setImageResource(it) }
         holder.alphas.text = alphaChar.alphaChar
@@ -32,7 +32,7 @@ class AlphaAdapters(var context: Context, var arrayList: ArrayList<AlphaChar>) :
         holder.icons.setOnClickListener{
             val intent = Intent(context, GamePage::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            intent.putExtra("onoff", ChoseGame().songOffOn)
+            //intent.putExtra("onoff", sonido)
             context.startActivity(intent)
         }
     }
