@@ -4,8 +4,6 @@ package diego.guinea.preciojusto.utils
 const val PrincipalRepo = "https://www.dropbox.com/s/"
 var Sonido = 0
 
-val VideoFondo = "https://www.dropbox.com/s/gb37mgtosy48pc3/fondoApp.mp4?dl=1"
-
 const val LLamadaDB =
     "CREATE TABLE persons(id int(4)," + "name varchar(100),"+
             "species varchar(100)," + "image varchar(100)," + "status varchar(100),"+ "gender varchar(100),"+

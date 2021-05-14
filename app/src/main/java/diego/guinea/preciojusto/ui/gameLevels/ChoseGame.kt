@@ -19,16 +19,14 @@ class ChoseGame : AppCompatActivity() {
     private var alphaAdapters: AlphaAdapters ? = null
     private lateinit var mp: MediaPlayer
     private var currentPositionSong: Int? = null
-    var songOffOn: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chose_levels)
         currentPositionSong = intent.getIntExtra("song",0)
-       // songOffOn = intent.getIntExtra("onoff", 0)
         setConfigItems()
-
     }
+
     override fun onStop() {
         super.onStop()
         mp.stop()
@@ -63,7 +61,6 @@ class ChoseGame : AppCompatActivity() {
     private fun setDataInList():ArrayList<AlphaChar>{
 
         val items: ArrayList<AlphaChar> = ArrayList()
-
 
         items.add(AlphaChar(R.mipmap.uno, "Nivel 1"))
         items.add(AlphaChar(R.mipmap.dos, "Nivel 2"))

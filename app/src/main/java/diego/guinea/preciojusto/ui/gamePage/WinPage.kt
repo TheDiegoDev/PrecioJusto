@@ -2,7 +2,6 @@ package diego.guinea.preciojusto.ui.gamePage
 
 import android.app.Dialog
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -10,9 +9,7 @@ import com.bumptech.glide.Glide
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.utils.showLoseDilog
 import diego.guinea.preciojusto.utils.showWinDialog
-import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_winpage.*
-import java.io.File
 
 class WinPage: AppCompatActivity() {
 

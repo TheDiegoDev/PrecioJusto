@@ -35,14 +35,11 @@ class GamePage : AppCompatActivity() {
     private var contError = 2
     private var mCountDown: CountDownTimer? = null
     lateinit var chip: Chip
-    private var currentPositionSong: Int? = null
     private lateinit var mp: MediaPlayer
-    private var songOffOn: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
-       // songOffOn = intent.getIntExtra("onoff", 0)
         setViewinivsible()
         viewModel.getAllData()
         observer()

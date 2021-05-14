@@ -2,7 +2,6 @@ package diego.guinea.preciojusto.ui.gamePage
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import diego.guinea.preciojusto.data.modelo.ObjectsPJ
 import diego.guinea.preciojusto.data.modelo.ObjectsPrice
 import diego.guinea.preciojusto.utils.BaseCallback
 
