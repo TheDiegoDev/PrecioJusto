@@ -1,5 +1,6 @@
 package diego.guinea.preciojusto.ui.gameLevels
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.AlphaChar
 import diego.guinea.preciojusto.ui.presenter.AlphaAdapters
+import diego.guinea.preciojusto.ui.shop.Shop
 import diego.guinea.preciojusto.utils.Sonido
+import kotlinx.android.synthetic.main.activity_chose_levels.*
 
 class ChoseGame : AppCompatActivity() {
 
@@ -25,6 +28,15 @@ class ChoseGame : AppCompatActivity() {
         setContentView(R.layout.activity_chose_levels)
         currentPositionSong = intent.getIntExtra("song",0)
         setConfigItems()
+        ShopIntent()
+    }
+
+    private fun ShopIntent() {
+        btn_shop.setOnClickListener {
+            val intent = Intent(this, Shop::class.java)
+            intent.putExtra("song", currentPositionSong)
+            startActivity(intent)
+        }
     }
 
     override fun onStop() {
