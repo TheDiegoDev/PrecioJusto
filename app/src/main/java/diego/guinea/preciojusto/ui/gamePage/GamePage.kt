@@ -48,6 +48,7 @@ class GamePage : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         mp.stop()
+        mCountDown?.cancel()
     }
 
     override fun onStart() {

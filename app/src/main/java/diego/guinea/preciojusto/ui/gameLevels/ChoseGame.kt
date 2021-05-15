@@ -1,6 +1,8 @@
 package diego.guinea.preciojusto.ui.gameLevels
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import diego.guinea.preciojusto.data.modelo.AlphaChar
 import diego.guinea.preciojusto.ui.CoinPageViewModel
 import diego.guinea.preciojusto.ui.presenter.AlphaAdapters
 import diego.guinea.preciojusto.ui.shop.Shop
+import diego.guinea.preciojusto.utils.Monedas
 import diego.guinea.preciojusto.utils.Sonido
 import kotlinx.android.synthetic.main.activity_chose_levels.*
 import org.koin.android.ext.android.inject
@@ -26,11 +29,14 @@ class ChoseGame : AppCompatActivity() {
     private var alphaAdapters: AlphaAdapters ? = null
     private lateinit var mp: MediaPlayer
     private var currentPositionSong: Int? = null
+    private lateinit var prefs : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chose_levels)
         currentPositionSong = intent.getIntExtra("song",0)
+        prefs = getSharedPreferences("Prefs", Context.MODE_PRIVATE)
+        Monedas = prefs.getString("key","0")?.toInt()!!
         setConfigItems()
         ShopIntent()
     }
@@ -67,6 +73,9 @@ class ChoseGame : AppCompatActivity() {
     private fun ObserveCoins() {
         viewModel.valuesViewMLD.observe(this, Observer {
             text_coins.text = it
+            val editor : SharedPreferences.Editor = prefs.edit()
+            editor.putString("key", it)
+            editor.apply()
         })
     }
     private fun setConfigItems(){
