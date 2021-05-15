@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".ui.gameLevels.ChoseGame">
+
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_margin="10dp">
+
+       <TextView
+           android:id="@+id/text_coins"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginEnd="5dp"
+           android:text="0"/>
+
+       <ImageView
+           android:id="@+id/image_money"
+           android:layout_width="20dp"
+           android:layout_height="20dp"
+           app:srcCompat="@mipmap/dollar"
+           tools:srcCompat="@mipmap/dollar" />
+
+   </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:fontFamily="casual"
+        android:padding="10dp"
         android:text="@string/chose_level"
-        android:textSize="40sp"
-        android:padding="12dp"
         android:textColor="#032D6A"
-        android:fontFamily="casual"/>
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn_shop"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         android:text="@string/tienda" />
 
 
