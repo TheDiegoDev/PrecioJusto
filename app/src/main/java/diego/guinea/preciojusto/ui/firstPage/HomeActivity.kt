@@ -17,7 +17,6 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var mp: MediaPlayer
     private var currentPositionSong: Int? = null
-    //private var songOffOn: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +69,6 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, ChoseGame::class.java)
             currentPositionSong = mp.currentPosition
             intent.putExtra("song", currentPositionSong)
-           // intent.putExtra("onoff", Sonido)
             startActivity(intent)
         }
         settingsButton.setOnClickListener {

@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.AlphaChar
-import diego.guinea.preciojusto.ui.gameLevels.ChoseGame
 import diego.guinea.preciojusto.ui.gamePage.GamePage
 
 
@@ -32,7 +30,6 @@ class AlphaAdapters(var context: Context, var arrayList: ArrayList<AlphaChar>) :
         holder.icons.setOnClickListener{
             val intent = Intent(context, GamePage::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            //intent.putExtra("onoff", sonido)
             context.startActivity(intent)
         }
     }

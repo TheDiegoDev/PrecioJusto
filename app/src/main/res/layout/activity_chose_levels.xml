@@ -21,7 +21,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="12dp"/>
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_shop"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:text="@string/tienda" />
+
 
 </LinearLayout>

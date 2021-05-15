@@ -6,4 +6,5 @@
     <string name="contador">WINS: 0\n LIVES: 2</string>
     <string name="textPrueba">TEXTO DE PRUEBA</string>
     <string name="chose_level">Chose Level</string>
+    <string name="tienda">Tienda</string>
 </resources>
