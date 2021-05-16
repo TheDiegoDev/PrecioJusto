@@ -4,6 +4,8 @@ package diego.guinea.preciojusto.utils
 const val PrincipalRepo = "https://www.dropbox.com/s/"
 var Sonido = 0
 var Monedas = 0
+var contWins = 0
+var contError = 2
 
 const val LLamadaDB =
     "CREATE TABLE persons(id int(4)," + "name varchar(100),"+

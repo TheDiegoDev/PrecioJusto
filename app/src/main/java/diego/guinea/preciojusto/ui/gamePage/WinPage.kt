@@ -4,12 +4,14 @@ import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.utils.Monedas
 import diego.guinea.preciojusto.utils.showLoseDilog
 import diego.guinea.preciojusto.utils.showWinDialog
+import kotlinx.android.synthetic.main.activity_chose_levels.*
 import kotlinx.android.synthetic.main.activity_winpage.*
 
 class WinPage: AppCompatActivity() {
@@ -45,6 +47,8 @@ class WinPage: AppCompatActivity() {
         val lives = intent.getStringExtra("numLives").toString()
 
         if (lives == "0"){
+            textCoinsWinPage.visibility = View.INVISIBLE
+            imageCoinWinPage.visibility = View.INVISIBLE
             showLosePage()
             textContWins.setTextColor(Color.RED)
             "Loser".also { textContWins.text = it }

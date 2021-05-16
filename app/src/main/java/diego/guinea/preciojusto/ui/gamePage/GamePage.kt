@@ -16,14 +16,13 @@ import com.google.android.material.chip.Chip
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.ObjectsPJ
 import diego.guinea.preciojusto.data.modelo.ObjectsPrice
-import diego.guinea.preciojusto.utils.Sonido
-import diego.guinea.preciojusto.utils.showCheckDialog
-import diego.guinea.preciojusto.utils.showWrongDialog
-import diego.guinea.preciojusto.utils.vibrate
+import diego.guinea.preciojusto.ui.presenter.CustomDialog
+import diego.guinea.preciojusto.utils.*
 import kotlinx.android.synthetic.main.activity_game.*
 import org.koin.android.ext.android.inject
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.properties.Delegates
 
 
 class GamePage : AppCompatActivity() {
@@ -31,8 +30,8 @@ class GamePage : AppCompatActivity() {
     private val viewModel by inject<GamePageViewModel>()
     private val pjObject: ArrayList<ObjectsPJ> = arrayListOf()
     private var loadingDialog: Dialog? = null
-    private var cont = 0
-    private var contError = 2
+    private var wins by Delegates.notNull<Int>()
+    private var lives by Delegates.notNull<Int>()
     private var mCountDown: CountDownTimer? = null
     lateinit var chip: Chip
     private lateinit var mp: MediaPlayer
@@ -53,6 +52,8 @@ class GamePage : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        contError = 2
+        contWins = 0
         BackgroundSound()
     }
 
@@ -68,9 +69,9 @@ class GamePage : AppCompatActivity() {
     private fun setPriceChip(){
 
         val numValues: ArrayList<String> = arrayListOf()
-        numValues.add(pjObject[cont].precios.segundo.toString())
-        numValues.add(pjObject[cont].precio.toString())
-        numValues.add(pjObject[cont].precios.primero.toString())
+        numValues.add(pjObject[contWins].precios.segundo.toString())
+        numValues.add(pjObject[contWins].precio.toString())
+        numValues.add(pjObject[contWins].precios.primero.toString())
 
         val priceOne = findViewById<Chip>(R.id.chipPriceOne)
         val priceTwo = findViewById<Chip>(R.id.chipPriceTwo)
@@ -145,6 +146,12 @@ class GamePage : AppCompatActivity() {
     }
 
     private fun observer() {
+//        viewModel.livesViewMDL.observe(this, Observer {
+//            lives = it
+//        })
+//        viewModel.winsViewMDL.observe(this, Observer {
+//           wins = it
+//        })
         viewModel.valuesViewMLD.observe(this, Observer {
             getData(it)
         })
@@ -186,28 +193,34 @@ class GamePage : AppCompatActivity() {
         visibleView()
         mCountDown?.cancel()
         setTimerOn()
-        if (cont >= pjObject.size){
+        if (contWins >= pjObject.size){
             winPageIntent()
         }else{
             setPriceChip()
             Glide.with(imageObject.context)
-                .load(pjObject[cont].foto)
+                .load(pjObject[contWins].foto)
                 .into(imageObject)
-            textNameObject.text = pjObject[cont].name
-            textDescripcion.text = pjObject[cont].descripcion
+            textNameObject.text = pjObject[contWins].name
+            textDescripcion.text = pjObject[contWins].descripcion
         }
 
         imageNext.setOnClickListener {
-            imageClick(cont)
+            imageClick(contWins)
         }
     }
 
     private fun winPageIntent() {
         stopAnimacion()
-        val intent = Intent(this, WinPage::class.java)
-        intent.putExtra("numCont", "$cont")
-        intent.putExtra("numLives", "$contError")
-        startActivity(intent)
+        if(contError == 0){
+            val dialog = CustomDialog()
+            dialog.show(supportFragmentManager, "CustomDialog")
+        }else{
+            val intent = Intent(this, WinPage::class.java)
+            intent.putExtra("numCont", "$contWins")
+            intent.putExtra("numLives", "$contError")
+            startActivity(intent)
+        }
+
     }
 
     private fun visibleView() {
@@ -225,17 +238,17 @@ class GamePage : AppCompatActivity() {
         val textChipSelected = getChipSelected(chipGroup.checkedChipId)
 
             if (textChipSelected == pjObject[num].precio) {
-                cont++
+                contWins++
                 showCheck()
                 prepareBackgroud()
-                "WINS: ${this.cont}\n LIVES: $contError".also { textPoints.text = it }
+                "WINS: $contWins\n LIVES: $contError".also { textPoints.text = it }
                 textPoints.setTextColor(Color.GREEN)
             } else {
                 contError--
                 if (contError == 0){
                     winPageIntent()
                 }else{
-                    "WINS: ${this.cont}\n LIVES: $contError".also { textPoints.text = it }
+                    "WINS: $contWins\n LIVES: $contError".also { textPoints.text = it }
                     this.vibrate()
                     textPoints.setTextColor(Color.RED)
                     showDialog()
