@@ -15,7 +15,7 @@
         android:textAlignment="center"
         android:textSize="50sp"
         android:fontFamily="@font/creepster"
-        android:text="You win"
+        android:text="@string/you_win"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
@@ -42,9 +42,34 @@
         android:textAlignment="center"
         android:textSize="50sp"
         android:fontFamily="@font/creepster"
-        android:text="SCORE: "
+        android:text="@string/score"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textCoinsWinPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/creepster"
+        android:text="@string/more_coins"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.438"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textScore" />
+
+    <ImageView
+        android:id="@+id/imageCoinWinPage"
+        android:layout_width="53dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textCoinsWinPage"
+        app:layout_constraintStart_toEndOf="@+id/textCoinsWinPage"
+        app:layout_constraintTop_toTopOf="@+id/textCoinsWinPage"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/dollar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
