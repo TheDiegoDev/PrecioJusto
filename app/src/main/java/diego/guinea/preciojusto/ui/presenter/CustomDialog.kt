@@ -33,12 +33,8 @@ class CustomDialog: DialogFragment() {
         }
         rootView.btn_less_coins.setOnClickListener {
             if (Monedas >= 2){
-                Monedas-2
-                contError+2
-//                viewModel.getCoinsValues()
-//                viewModel.livesViewMLD.observe(viewLifecycleOwner, Observer {
-//
-//                })
+                Monedas -= 2
+                contError += 2
                 dismiss()
             }else{
                dismiss()

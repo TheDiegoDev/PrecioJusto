@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_game.*
 import org.koin.android.ext.android.inject
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.properties.Delegates
+
 
 
 class GamePage : AppCompatActivity() {
@@ -30,8 +30,6 @@ class GamePage : AppCompatActivity() {
     private val viewModel by inject<GamePageViewModel>()
     private val pjObject: ArrayList<ObjectsPJ> = arrayListOf()
     private var loadingDialog: Dialog? = null
-    private var wins by Delegates.notNull<Int>()
-    private var lives by Delegates.notNull<Int>()
     private var mCountDown: CountDownTimer? = null
     lateinit var chip: Chip
     private lateinit var mp: MediaPlayer
@@ -40,8 +38,9 @@ class GamePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         setViewinivsible()
-        viewModel.getAllData()
-        observer()
+        contError = 2
+        contWins = 0
+
     }
 
     override fun onStop() {
@@ -52,8 +51,8 @@ class GamePage : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        contError = 2
-        contWins = 0
+        viewModel.getAllData()
+        observer()
         BackgroundSound()
     }
 
@@ -146,12 +145,13 @@ class GamePage : AppCompatActivity() {
     }
 
     private fun observer() {
-//        viewModel.livesViewMDL.observe(this, Observer {
-//            lives = it
-//        })
-//        viewModel.winsViewMDL.observe(this, Observer {
-//           wins = it
-//        })
+        viewModel.livesViewMDL.observe(this, Observer {
+            contError = it
+
+        })
+        viewModel.winsViewMDL.observe(this, Observer {
+            contWins = it
+        })
         viewModel.valuesViewMLD.observe(this, Observer {
             getData(it)
         })
