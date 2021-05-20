@@ -17,8 +17,8 @@ class GamePageViewModel: ViewModel() {
 
 
     fun getAllData(){
-//        livesViewMDL.value = contError
-//        winsViewMDL.value = contWins
+        livesViewMDL.value = contError
+        winsViewMDL.value = contWins
         repositorio.getObjects(object : BaseCallback<ObjectsPrice> {
             override fun onResult(result: ObjectsPrice) {
                 valuesViewMLD.value = result

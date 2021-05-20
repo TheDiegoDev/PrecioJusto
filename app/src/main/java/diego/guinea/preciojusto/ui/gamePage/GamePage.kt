@@ -1,7 +1,9 @@
 package diego.guinea.preciojusto.ui.gamePage
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -22,7 +24,7 @@ import kotlinx.android.synthetic.main.activity_game.*
 import org.koin.android.ext.android.inject
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.properties.Delegates
+
 
 
 class GamePage : AppCompatActivity() {
@@ -30,30 +32,35 @@ class GamePage : AppCompatActivity() {
     private val viewModel by inject<GamePageViewModel>()
     private val pjObject: ArrayList<ObjectsPJ> = arrayListOf()
     private var loadingDialog: Dialog? = null
-    private var wins by Delegates.notNull<Int>()
-    private var lives by Delegates.notNull<Int>()
     private var mCountDown: CountDownTimer? = null
     lateinit var chip: Chip
     private lateinit var mp: MediaPlayer
+    private lateinit var prefs : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+        prefs = getSharedPreferences("Prefs", Context.MODE_PRIVATE)
         setViewinivsible()
-        viewModel.getAllData()
-        observer()
+        contError = 2
+        contWins = 0
+
     }
 
     override fun onStop() {
         super.onStop()
         mp.stop()
         mCountDown?.cancel()
+        val editor : SharedPreferences.Editor = prefs.edit()
+        editor.putString("key", Monedas.toString())
+        editor.apply()
     }
+
 
     override fun onStart() {
         super.onStart()
-        contError = 2
-        contWins = 0
+        viewModel.getAllData()
+        observer()
         BackgroundSound()
     }
 
@@ -146,12 +153,15 @@ class GamePage : AppCompatActivity() {
     }
 
     private fun observer() {
-//        viewModel.livesViewMDL.observe(this, Observer {
-//            lives = it
-//        })
-//        viewModel.winsViewMDL.observe(this, Observer {
-//           wins = it
-//        })
+        viewModel.livesViewMDL.observe(this, Observer {
+            contError = it
+            observeWinsAndLives()
+
+        })
+        viewModel.winsViewMDL.observe(this, Observer {
+            contWins = it
+            observeWinsAndLives()
+        })
         viewModel.valuesViewMLD.observe(this, Observer {
             getData(it)
         })
@@ -241,14 +251,14 @@ class GamePage : AppCompatActivity() {
                 contWins++
                 showCheck()
                 prepareBackgroud()
-                "WINS: $contWins\n LIVES: $contError".also { textPoints.text = it }
+                observeWinsAndLives()
                 textPoints.setTextColor(Color.GREEN)
             } else {
                 contError--
                 if (contError == 0){
                     winPageIntent()
                 }else{
-                    "WINS: $contWins\n LIVES: $contError".also { textPoints.text = it }
+                    observeWinsAndLives()
                     this.vibrate()
                     textPoints.setTextColor(Color.RED)
                     showDialog()
@@ -260,6 +270,10 @@ class GamePage : AppCompatActivity() {
                 chip.isChecked = false
             }
 
+    }
+
+    private fun observeWinsAndLives() {
+        "WINS: $contWins\n LIVES: $contError".also { textPoints.text = it }
     }
 
     private fun getChipSelected(checkedChipId: Int): String {
