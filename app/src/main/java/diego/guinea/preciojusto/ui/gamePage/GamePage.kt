@@ -1,7 +1,9 @@
 package diego.guinea.preciojusto.ui.gamePage
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -33,10 +35,12 @@ class GamePage : AppCompatActivity() {
     private var mCountDown: CountDownTimer? = null
     lateinit var chip: Chip
     private lateinit var mp: MediaPlayer
+    private lateinit var prefs : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+        prefs = getSharedPreferences("Prefs", Context.MODE_PRIVATE)
         setViewinivsible()
         contError = 2
         contWins = 0
@@ -47,7 +51,11 @@ class GamePage : AppCompatActivity() {
         super.onStop()
         mp.stop()
         mCountDown?.cancel()
+        val editor : SharedPreferences.Editor = prefs.edit()
+        editor.putString("key", Monedas.toString())
+        editor.apply()
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -147,10 +155,12 @@ class GamePage : AppCompatActivity() {
     private fun observer() {
         viewModel.livesViewMDL.observe(this, Observer {
             contError = it
+            observeWinsAndLives()
 
         })
         viewModel.winsViewMDL.observe(this, Observer {
             contWins = it
+            observeWinsAndLives()
         })
         viewModel.valuesViewMLD.observe(this, Observer {
             getData(it)
@@ -241,14 +251,14 @@ class GamePage : AppCompatActivity() {
                 contWins++
                 showCheck()
                 prepareBackgroud()
-                "WINS: $contWins\n LIVES: $contError".also { textPoints.text = it }
+                observeWinsAndLives()
                 textPoints.setTextColor(Color.GREEN)
             } else {
                 contError--
                 if (contError == 0){
                     winPageIntent()
                 }else{
-                    "WINS: $contWins\n LIVES: $contError".also { textPoints.text = it }
+                    observeWinsAndLives()
                     this.vibrate()
                     textPoints.setTextColor(Color.RED)
                     showDialog()
@@ -260,6 +270,10 @@ class GamePage : AppCompatActivity() {
                 chip.isChecked = false
             }
 
+    }
+
+    private fun observeWinsAndLives() {
+        "WINS: $contWins\n LIVES: $contError".also { textPoints.text = it }
     }
 
     private fun getChipSelected(checkedChipId: Int): String {

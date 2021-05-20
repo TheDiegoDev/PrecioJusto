@@ -1,5 +1,6 @@
 package diego.guinea.preciojusto.ui
 
+import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import diego.guinea.preciojusto.utils.Monedas
@@ -10,6 +11,5 @@ class CoinPageViewModel: ViewModel() {
 
     fun getCoinsValues(){
         valuesViewMLD.value = Monedas.toString()
-
     }
 }

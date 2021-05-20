@@ -6,20 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.Observer
 import diego.guinea.preciojusto.R
-import diego.guinea.preciojusto.ui.CoinPageViewModel
 import diego.guinea.preciojusto.ui.gamePage.WinPage
 import diego.guinea.preciojusto.utils.Monedas
 import diego.guinea.preciojusto.utils.contError
 import diego.guinea.preciojusto.utils.contWins
-import kotlinx.android.synthetic.main.fragmen_custom_dialog.*
 import kotlinx.android.synthetic.main.fragmen_custom_dialog.view.*
-import org.koin.android.ext.android.inject
 
 class CustomDialog: DialogFragment() {
 
-    private val viewModel by inject<CoinPageViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
