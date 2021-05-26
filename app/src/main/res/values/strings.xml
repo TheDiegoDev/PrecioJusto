@@ -15,4 +15,12 @@
     <string name="dialog_text">Si no quieres volver a empezar paga y sigue con tu record</string>
     <string name="cancel">Cancel</string>
     <string name="continuar_2">2 Coins to Continue</string>
+    <string name="precio10coins">1€</string>
+    <string name="comprar_10_coins">Comprar 10 coins</string>
+    <string name="comprar_25_coins">Comprar 25 coins</string>
+    <string name="precio50coins">4€</string>
+    <string name="comprar_50_coins">Comprar 50 coins</string>
+    <string name="comprar25coins">2€</string>
+    <string name="comprar_100_coins">Comprar 100 coins</string>
+    <string name="precio100coins">7€</string>
 </resources>

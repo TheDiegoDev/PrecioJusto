@@ -10,4 +10,6 @@
     <color name="green">#008000</color>
     <color name="chip">#00BCD4</color>
     <color name="greenChip">#4CAF50</color>
+    <color name="shopBackColor">#D8FFEC</color>
+    <color name="shopColor">#93F2C3</color>
 </resources>
