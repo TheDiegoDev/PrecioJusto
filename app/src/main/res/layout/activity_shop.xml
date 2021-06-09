@@ -8,9 +8,140 @@
     android:layout_height="match_parent"
     android:background="@color/shopBackColor">
 
-    <WebView
-        android:id="@+id/paypalView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
+    <TextView
+        android:id="@+id/txtBTCWallet"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/textview_back"
+        android:text="3Gr1iUsGce...."
+        android:gravity="center"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleShop" />
+
+    <TextView
+        android:id="@+id/txtETHWallet"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/textview_back"
+        android:gravity="center"
+        android:text="0x627A620F4E...."
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBTCWallet" />
+
+    <TextView
+        android:id="@+id/txtMyPaypal"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/textview_back"
+        android:gravity="center"
+        android:text="paypal.com/paypalme/AndroidDevPay"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtETHWallet" />
+
+    <Button
+        android:id="@+id/copyBTC"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/copy"
+        app:layout_constraintBottom_toBottomOf="@+id/txtBTCWallet"
+        app:layout_constraintStart_toEndOf="@+id/txtBTCWallet" />
+
+    <Button
+        android:id="@+id/copyETH"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/copy"
+        app:layout_constraintBottom_toBottomOf="@+id/txtETHWallet"
+        app:layout_constraintStart_toEndOf="@+id/txtETHWallet" />
+
+    <Button
+        android:id="@+id/copyPaypal"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/copy"
+        app:layout_constraintBottom_toBottomOf="@+id/txtMyPaypal"
+        app:layout_constraintStart_toEndOf="@+id/txtMyPaypal" />
+
+    <TextView
+        android:id="@+id/txtTitleShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/text_apoyo"
+        android:fontFamily="casual"
+        android:textColor="#032D6A"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtBTC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="casual"
+        android:textColor="#032D6A"
+        android:text="@string/mandame_btc_a_mi_wallet"
+        app:layout_constraintBottom_toTopOf="@+id/txtBTCWallet"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtETH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="casual"
+        android:textColor="#032D6A"
+        android:text="@string/mandame_eth_a_mi_wallet"
+        app:layout_constraintBottom_toTopOf="@+id/txtETHWallet"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPaypal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="casual"
+        android:text="@string/mandame_paypal"
+        android:textColor="#032D6A"
+        app:layout_constraintBottom_toTopOf="@+id/txtMyPaypal"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/openLinkedin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Open my Linkedin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMyPaypal" />
+
+    <Button
+        android:id="@+id/openGit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Open my GitHub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/openLinkedin" />
 </androidx.constraintlayout.widget.ConstraintLayout>

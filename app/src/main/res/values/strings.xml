@@ -23,4 +23,9 @@
     <string name="comprar25coins">2€</string>
     <string name="comprar_100_coins">Comprar 100 coins</string>
     <string name="precio100coins">7€</string>
+    <string name="text_apoyo">Apoyame de la manera que quieras</string>
+    <string name="copy">Copy</string>
+    <string name="mandame_btc_a_mi_wallet">Mandame BTC a mi Wallet</string>
+    <string name="mandame_eth_a_mi_wallet">Mandame ETH a mi Wallet</string>
+    <string name="mandame_paypal">Mandame Paypal</string>
 </resources>

@@ -19,14 +19,14 @@ class Shop : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
         //currentPositionSong = intent.getIntExtra("song",0)
-        openWebView()
+        //openWebView()
     }
 
 
     private fun openWebView() {
-        paypalView.webViewClient = WebViewClient()
-        //paypalView.loadUrl("https://www.paypal.com/paypalme/AndroidDevPay")
-    }
+       // paypalView.webViewClient = WebViewClient()
+       // paypalView.loadUrl("https://www.paypal.com/")
+    }//https://www.google.com/
 
 //    override fun onStop() {
 //        super.onStop()
