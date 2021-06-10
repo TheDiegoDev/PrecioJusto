@@ -16,7 +16,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/textview_back"
-        android:text="3Gr1iUsGce...."
+        android:text="@string/btc_wallet"
         android:gravity="center"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:layout_marginTop="70dp"
         android:background="@drawable/textview_back"
         android:gravity="center"
-        android:text="0x627A620F4E...."
+        android:text="@string/eth_wallet"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBTCWallet" />
@@ -43,7 +43,7 @@
         android:layout_marginTop="70dp"
         android:background="@drawable/textview_back"
         android:gravity="center"
-        android:text="paypal.com/paypalme/AndroidDevPay"
+        android:text="@string/link_paypal"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtETHWallet" />
@@ -130,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Open my Linkedin"
+        android:text="@string/open_my_linkedin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMyPaypal" />
@@ -140,8 +140,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Open my GitHub"
+        android:text="@string/open_my_github"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openLinkedin" />
+
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="casual"
+        android:textColor="#032D6A"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="@string/info_txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/openGit" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@
     package="diego.guinea.preciojusto">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -40,6 +41,9 @@
             android:label="@string/app_name" />
         <activity
             android:name=".ui.shop.Shop"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".ui.presenter.WebView"
             android:label="@string/app_name" />
         <meta-data
             android:name="preloaded_fonts"
