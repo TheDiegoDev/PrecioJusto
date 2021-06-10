@@ -28,4 +28,10 @@
     <string name="mandame_btc_a_mi_wallet">Mandame BTC a mi Wallet</string>
     <string name="mandame_eth_a_mi_wallet">Mandame ETH a mi Wallet</string>
     <string name="mandame_paypal">Mandame Paypal</string>
+    <string name="info_txt">Como puedes ver no hay anuncios en este juego, de modo que no tengo ningun beneficio por esta app ni guardo informacion sobre los jugadores asi que agradezco mucho cualquier apoyo que puedas darme por muy pequeño que sea.</string>
+    <string name="open_my_github">Open my GitHub</string>
+    <string name="open_my_linkedin">Open my Linkedin</string>
+    <string name="link_paypal">paypal.com/paypalme/AndroidDevPay</string>
+    <string name="eth_wallet">0x627A620F4E6513e541b3c4b4362bc997259Ce988</string>
+    <string name="btc_wallet">3Gr1iUsGceSczrG6wVSBoBEF2tPGWqvdwt</string>
 </resources>
