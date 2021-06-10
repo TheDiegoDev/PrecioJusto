@@ -1,9 +1,12 @@
 package diego.guinea.preciojusto.ui.shop
 
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.ui.presenter.WebView
@@ -30,9 +33,16 @@ class Shop : AppCompatActivity() {
     private fun setView() {
         openLinkedin.setOnClickListener { webViewIntent(Linkedin) }
         openGit.setOnClickListener {webViewIntent(GitHub)}
-        copyBTC.setOnClickListener {  }
-        copyETH.setOnClickListener {  }
-        copyPaypal.setOnClickListener {  }
+        copyBTC.setOnClickListener {copyText(txtBTCWallet.text as String)}
+        copyETH.setOnClickListener {copyText(txtETHWallet.text as String)}
+        copyPaypal.setOnClickListener {copyText(txtMyPaypal.text as String)}
+    }
+
+    private fun copyText(txt: String) {
+        val clipboard = getSystemService((CLIPBOARD_SERVICE)) as ClipboardManager
+        val clip = ClipData.newPlainText("TextView", txt)
+        clipboard.setPrimaryClip(clip)
+        Toast.makeText(this, "Copiado :)", Toast.LENGTH_LONG).show()
     }
 
     private fun webViewIntent(url: String) {

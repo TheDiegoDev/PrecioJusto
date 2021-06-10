@@ -16,7 +16,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/textview_back"
-        android:text="3Gr1iUsGce...."
+        android:text="3Gr1iUsGceSczrG6wVSBoBEF2tPGWqvdwt"
         android:gravity="center"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:layout_marginTop="70dp"
         android:background="@drawable/textview_back"
         android:gravity="center"
-        android:text="0x627A620F4E...."
+        android:text="0x627A620F4E6513e541b3c4b4362bc997259Ce988"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBTCWallet" />
