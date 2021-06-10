@@ -2,6 +2,8 @@ package diego.guinea.preciojusto.utils
 
 
 const val PrincipalRepo = "https://www.dropbox.com/s/"
+var Linkedin = "https://www.linkedin.com/in/diego-guinea-yurrita-7607b5207/"
+var GitHub = "https://github.com/TheDiegoDev"
 var Sonido = 0
 var Monedas = 0
 var contWins = 0

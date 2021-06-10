@@ -1,11 +1,15 @@
 package diego.guinea.preciojusto.ui.shop
 
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import diego.guinea.preciojusto.R
+import diego.guinea.preciojusto.ui.presenter.WebView
+import diego.guinea.preciojusto.utils.GitHub
+import diego.guinea.preciojusto.utils.Linkedin
+import diego.guinea.preciojusto.utils.Sonido
 
 import kotlinx.android.synthetic.main.activity_shop.*
 
@@ -18,33 +22,42 @@ class Shop : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
-        //currentPositionSong = intent.getIntExtra("song",0)
-        //openWebView()
+        currentPositionSong = intent.getIntExtra("song",0)
+        setView()
     }
 
 
-    private fun openWebView() {
-       // paypalView.webViewClient = WebViewClient()
-       // paypalView.loadUrl("https://www.paypal.com/")
-    }//https://www.google.com/
+    private fun setView() {
+        openLinkedin.setOnClickListener { webViewIntent(Linkedin) }
+        openGit.setOnClickListener {webViewIntent(GitHub)}
+        copyBTC.setOnClickListener {  }
+        copyETH.setOnClickListener {  }
+        copyPaypal.setOnClickListener {  }
+    }
 
-//    override fun onStop() {
-//        super.onStop()
-//        mp.stop()
-//    }
-//
-//    override fun onStart() {
-//        super.onStart()
-//        BackgroundSound()
-//    }
-//
-//    private fun BackgroundSound() {
-//        mp = MediaPlayer.create(this, R.raw.preciojusto)
-//        mp.isLooping = true
-//        mp.setVolume(100f, 100f)
-//        currentPositionSong?.let { mp.seekTo(it) }
-//        if (Sonido == 0) {
-//            mp.start()
-//        }
-//    }
+    private fun webViewIntent(url: String) {
+        val intent = Intent(this, WebView::class.java)
+        intent.putExtra("url", url)
+        startActivity(intent)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mp.stop()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        BackgroundSound()
+    }
+
+    private fun BackgroundSound() {
+        mp = MediaPlayer.create(this, R.raw.preciojusto)
+        mp.isLooping = true
+        mp.setVolume(100f, 100f)
+        currentPositionSong?.let { mp.seekTo(it) }
+        if (Sonido == 0) {
+            mp.start()
+        }
+    }
 }
