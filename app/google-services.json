@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "678500883442",
+    "project_id": "preciojustodb",
+    "storage_bucket": "preciojustodb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678500883442:android:105182308c2221d24c696b",
+        "android_client_info": {
+          "package_name": "diego.guinea.preciojusto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678500883442-i93bqhnrklk094d3u40517v54ajoetab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-H8LZEDvHhY-R0gb-3aXKAymbfVAIhqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678500883442-i93bqhnrklk094d3u40517v54ajoetab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
