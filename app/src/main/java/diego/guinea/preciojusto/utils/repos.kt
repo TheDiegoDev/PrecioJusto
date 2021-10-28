@@ -3,8 +3,9 @@ package diego.guinea.preciojusto.utils
 import org.json.JSONArray
 import org.json.JSONObject
 
-
-const val PrincipalRepo = "https://www.dropbox.com/s/"
+//http://217.71.207.223:3000/api/tasks
+//https://www.dropbox.com/s/
+const val PrincipalRepo = "http://217.71.207.223:3000/"
 var Linkedin = "https://www.linkedin.com/in/diego-guinea-yurrita-7607b5207/"
 var GitHub = "https://github.com/TheDiegoDev"
 var Sonido = 0

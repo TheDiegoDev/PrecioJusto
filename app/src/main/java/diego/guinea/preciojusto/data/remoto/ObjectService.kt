@@ -6,6 +6,8 @@ import retrofit2.http.*
 
 
 interface ObjectService {
-    @GET("n42jhkbeaxp46di/precio.json?dl=1")
+    @GET("api/tasks")
     fun listObject() : Call<ObjectsPrice>
 }
+//n42jhkbeaxp46di/precio.json?dl=1
+//https://www.dropbox.com/s/n42jhkbeaxp46di/precio.json?dl=0
