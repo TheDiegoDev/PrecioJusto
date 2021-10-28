@@ -1,5 +1,8 @@
 package diego.guinea.preciojusto.utils
 
+import org.json.JSONArray
+import org.json.JSONObject
+
 
 const val PrincipalRepo = "https://www.dropbox.com/s/"
 var Linkedin = "https://www.linkedin.com/in/diego-guinea-yurrita-7607b5207/"
@@ -8,6 +11,18 @@ var Sonido = 0
 var Monedas = 0
 var contWins = 0
 var contError = 2
+
+val baseRequest = JSONObject().apply {
+    put("apiVersion", 2)
+    put("apiVersionMinor", 0)
+}
+val allowedCardNetworks = JSONArray(listOf(
+    "MASTERCARD",
+    "VISA"))
+
+val allowedCardAuthMethods = JSONArray(listOf(
+    "PAN_ONLY",
+    "CRYPTOGRAM_3DS"))
 
 const val LLamadaDB =
     "CREATE TABLE persons(id int(4)," + "name varchar(100),"+
