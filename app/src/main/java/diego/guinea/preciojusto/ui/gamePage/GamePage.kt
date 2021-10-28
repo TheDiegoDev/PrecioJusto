@@ -76,9 +76,9 @@ class GamePage : AppCompatActivity() {
     private fun setPriceChip(){
 
         val numValues: ArrayList<String> = arrayListOf()
-        numValues.add(pjObject[contWins].precios.segundo.toString())
+        numValues.add(pjObject[contWins].segundo.toString())
         numValues.add(pjObject[contWins].precio.toString())
-        numValues.add(pjObject[contWins].precios.primero.toString())
+        numValues.add(pjObject[contWins].primero.toString())
 
         val priceOne = findViewById<Chip>(R.id.chipPriceOne)
         val priceTwo = findViewById<Chip>(R.id.chipPriceTwo)
