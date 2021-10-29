@@ -25,8 +25,6 @@ import org.koin.android.ext.android.inject
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-
-
 class GamePage : AppCompatActivity() {
 
     private val viewModel by inject<GamePageViewModel>()
@@ -36,6 +34,7 @@ class GamePage : AppCompatActivity() {
     lateinit var chip: Chip
     private lateinit var mp: MediaPlayer
     private lateinit var prefs : SharedPreferences
+    private var position: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,9 +58,24 @@ class GamePage : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        viewModel.getAllData()
+        position = intent.getIntExtra("position", 0)
+        setViewModel()
         observer()
         BackgroundSound()
+    }
+
+    private fun setViewModel() {
+        when (position) {
+            0 -> {viewModel.getAllDataPageOne()}
+            1 -> {viewModel.getAllDataPageTwo()}
+            2 -> {viewModel.getAllDataPageThree()}
+            3 -> {viewModel.getAllDataPageFour()}
+            4 -> {viewModel.getAllDataPageFive()}
+            5 -> {viewModel.getAllDataPageSix()}
+            6 -> {viewModel.getAllDataPageSeven()}
+            7 -> {viewModel.getAllDataPageEight()}
+            else -> {viewModel.getAllDataPageNine()}
+        }
     }
 
     private fun BackgroundSound() {
