@@ -122,7 +122,7 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPriceOne"
             style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="75dp"
+            android:layout_width="100dp"
             android:layout_height="75dp"
             android:background="@color/black"
             android:button="@android:drawable/divider_horizontal_bright"
@@ -134,7 +134,7 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPriceTwo"
             style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="75dp"
+            android:layout_width="100dp"
             android:layout_height="75dp"
             android:background="@color/black"
             android:button="@android:drawable/divider_horizontal_bright"
@@ -146,7 +146,7 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPriceThree"
             style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="75dp"
+            android:layout_width="100dp"
             android:layout_height="75dp"
             android:background="@color/black"
             android:button="@android:drawable/divider_horizontal_bright"

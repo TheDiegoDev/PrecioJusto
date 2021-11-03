@@ -35,6 +35,7 @@ class GamePage : AppCompatActivity() {
     private lateinit var mp: MediaPlayer
     private lateinit var prefs : SharedPreferences
     private var position: Int = 0
+    private var chipContent = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -214,6 +215,7 @@ class GamePage : AppCompatActivity() {
     }
 
     private fun prepareBackgroud() {
+        var texto = ""
         visibleView()
         mCountDown?.cancel()
         setTimerOn()
@@ -227,9 +229,15 @@ class GamePage : AppCompatActivity() {
             textNameObject.text = pjObject[contWins].name
             textDescripcion.text = pjObject[contWins].descripcion
         }
-
+        chipGroup.setOnCheckedChangeListener { group, checkedId:Int ->
+            imageNext.visibility = View.VISIBLE
+            val chip: Chip? = findViewById(checkedId)
+            chip.let {
+                 texto = it?.text.toString()
+            }
+        }
         imageNext.setOnClickListener {
-            imageClick(contWins)
+            imageClick(contWins, texto)
         }
     }
 
@@ -254,14 +262,15 @@ class GamePage : AppCompatActivity() {
         textNameObject.visibility = View.VISIBLE
         textDescripcion.visibility = View.VISIBLE
         chipGroup.visibility = View.VISIBLE
-        imageNext.visibility = View.VISIBLE
+       // imageNext.visibility = View.VISIBLE
         textPoints.visibility = View.VISIBLE
     }
 
-    private fun imageClick(num: Int) {
-        val textChipSelected = getChipSelected(chipGroup.checkedChipId)
+    private fun imageClick(num: Int, chipSelect: String) {
 
-            if (textChipSelected == pjObject[num].precio) {
+        //val textChipSelected = getChipSelected(chipGroup.checkedChipId)
+
+            if (chipSelect == pjObject[num].precio) {
                 contWins++
                 showCheck()
                 prepareBackgroud()
@@ -283,6 +292,8 @@ class GamePage : AppCompatActivity() {
                 val chip = chipGroup.getChildAt(i) as Chip
                 chip.isChecked = false
             }
+
+
 
     }
 
