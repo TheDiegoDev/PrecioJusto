@@ -91,9 +91,9 @@ class GamePage : AppCompatActivity() {
     private fun setPriceChip(){
 
         val numValues: ArrayList<String> = arrayListOf()
-        numValues.add(pjObject[contWins].segundo.toString())
         numValues.add(pjObject[contWins].precio.toString())
         numValues.add(pjObject[contWins].primero.toString())
+        numValues.add(pjObject[contWins].segundo.toString())
 
         val priceOne = findViewById<Chip>(R.id.chipPriceOne)
         val priceTwo = findViewById<Chip>(R.id.chipPriceTwo)
@@ -121,8 +121,12 @@ class GamePage : AppCompatActivity() {
                 priceTwo.text = numValues[idx - 2]
                 priceThree.text = numValues[idx - 1]
             }
-            else -> {
-                priceOne.text = numValues[idx + 1]
+            3 -> {
+                priceOne.text = numValues[idx - 2]
+                priceTwo.text = numValues[idx -1]
+                priceThree.text = numValues[idx - 3]
+            }else -> {
+                priceOne.text = numValues[idx +1]
                 priceTwo.text = numValues[idx]
                 priceThree.text = numValues[idx + 2]
             }
@@ -298,7 +302,7 @@ class GamePage : AppCompatActivity() {
     }
 
     private fun observeWinsAndLives() {
-        "WINS: $contWins\n LIVES: $contError".also { textPoints.text = it }
+        "WINS: $contWins || LIVES: $contError".also { textPoints.text = it }
     }
 
     private fun getChipSelected(checkedChipId: Int): String {
