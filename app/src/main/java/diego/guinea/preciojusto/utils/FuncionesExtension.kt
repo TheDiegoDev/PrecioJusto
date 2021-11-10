@@ -10,6 +10,8 @@ import android.os.Vibrator
 import androidx.core.graphics.drawable.toDrawable
 import diego.guinea.preciojusto.R
 
+
+//Funciones para mostrar animaciones Lottie
 fun Context.showWrongDialog(): Dialog{
         val progressDialog = Dialog(this)
         progressDialog.let {
@@ -55,6 +57,7 @@ fun Context.showLoseDilog(): Dialog{
     }
 }
 
+//Funcion para hacer vibrar el movil
 fun Context.vibrate(){
     val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

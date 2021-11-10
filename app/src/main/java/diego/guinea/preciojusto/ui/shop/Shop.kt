@@ -18,18 +18,13 @@ import kotlinx.android.synthetic.main.activity_shop.*
 
 class Shop : AppCompatActivity() {
 
-    private lateinit var mp: MediaPlayer
-    private var currentPositionSong: Int? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
-        currentPositionSong = intent.getIntExtra("song",0)
         setView()
     }
 
-
+    //Configuracion de Inicio
     private fun setView() {
         openLinkedin.setOnClickListener { webViewIntent(Linkedin) }
         openGit.setOnClickListener {webViewIntent(GitHub)}
@@ -38,6 +33,7 @@ class Shop : AppCompatActivity() {
         copyPaypal.setOnClickListener {copyText(txtMyPaypal.text as String)}
     }
 
+    //Funcion de Copy
     private fun copyText(txt: String) {
         val clipboard = getSystemService((CLIPBOARD_SERVICE)) as ClipboardManager
         val clip = ClipData.newPlainText("TextView", txt)
@@ -45,29 +41,10 @@ class Shop : AppCompatActivity() {
         Toast.makeText(this, "Copiado :)", Toast.LENGTH_LONG).show()
     }
 
+    //Intent para hacer un WebView
     private fun webViewIntent(url: String) {
         val intent = Intent(this, WebView::class.java)
         intent.putExtra("url", url)
         startActivity(intent)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        mp.stop()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        BackgroundSound()
-    }
-
-    private fun BackgroundSound() {
-        mp = MediaPlayer.create(this, R.raw.preciojusto)
-        mp.isLooping = true
-        mp.setVolume(100f, 100f)
-        currentPositionSong?.let { mp.seekTo(it) }
-        if (Sonido == 0) {
-            mp.start()
-        }
     }
 }

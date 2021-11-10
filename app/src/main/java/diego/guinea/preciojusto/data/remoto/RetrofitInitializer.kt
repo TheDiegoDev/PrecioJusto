@@ -4,6 +4,7 @@ import okhttp3.internal.platform.Platform
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+//Retrofit Initializer
 class RetrofitInitializer(repo: String) {
     private fun getLoggingInterceptor(): LoggingInterceptor {
         return LoggingInterceptor.Builder()

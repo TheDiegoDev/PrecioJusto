@@ -7,6 +7,8 @@ import diego.guinea.preciojusto.utils.allowedCardAuthMethods
 import diego.guinea.preciojusto.utils.allowedCardNetworks
 import org.json.JSONObject
 
+//Aun por hacer y entender como funciona GooglePay
+
 class ShopCoin : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

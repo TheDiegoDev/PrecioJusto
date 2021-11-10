@@ -24,16 +24,19 @@ class HomeActivity : AppCompatActivity() {
         prepareBackground()
     }
 
-        override fun onStop() {
+    //Gestion de la salida de la Activity
+    override fun onStop() {
             super.onStop()
             mp.stop()
     }
 
+    //Gestion de la entrada a la Activity
     override fun onStart() {
         super.onStart()
             BackgroundSound()
     }
 
+    //Sonido
     private fun BackgroundSound() {
         mp = MediaPlayer.create(this, R.raw.preciojusto)
         mp.isLooping = true
@@ -43,6 +46,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    //Poner la vista en marcha
     private fun prepareBackground() {
         val playButton = findViewById<ImageView>(R.id.play_button)
         val settingsButton = findViewById<ImageView>(R.id.settings_button)
@@ -64,6 +68,7 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    //Gestion de los botones
     private fun btnClicks(playButton: ImageView, settingsButton: ImageView) {
         playButton.setOnClickListener {
             val intent = Intent(this, ChoseGame::class.java)
