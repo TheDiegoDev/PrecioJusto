@@ -21,6 +21,8 @@ class Repository() {
     private val characterServiceEight = RetrofitInitializer(PrincipalRepo).objectServicePageEight()
     private val characterServiceNine = RetrofitInitializer(PrincipalRepo).objectServicePageNine()
 
+
+    //Llamada GET a la API
     fun getObjectsPageOne(callback: BaseCallback<ObjectsPrice>) {
 
         characterService.listObjectPageOne().enqueue(object : Callback<ObjectsPrice> {

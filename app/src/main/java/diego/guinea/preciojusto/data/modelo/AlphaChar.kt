@@ -1,5 +1,6 @@
 package diego.guinea.preciojusto.data.modelo
 
+//Modelo de datos CardView
 class AlphaChar {
 
     var iconChar: Int ? = 0

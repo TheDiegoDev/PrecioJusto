@@ -3,6 +3,7 @@ package diego.guinea.preciojusto.data.modelo
 
 import java.io.Serializable
 
+//Modelo de datos
 data class ObjectsPJ(
     var id: Int?,
     var name: String?,

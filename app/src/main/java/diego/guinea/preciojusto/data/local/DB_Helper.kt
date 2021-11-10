@@ -1,5 +1,7 @@
 package diego.guinea.preciojusto.data.local
-//
+
+//Futuro uso de Datos en local descargados de la API para el uso sin conexion
+
 //import android.content.ContentValues
 //import android.content.Context
 //import android.database.sqlite.SQLiteDatabase

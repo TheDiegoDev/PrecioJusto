@@ -4,7 +4,7 @@ import diego.guinea.preciojusto.data.modelo.ObjectsPrice
 import retrofit2.Call
 import retrofit2.http.*
 
-
+//Diferentes Llamadas GET
 interface ObjectServicePageOne {
     @GET("api/tasks?size=20&page=0")
     fun listObjectPageOne() : Call<ObjectsPrice>
