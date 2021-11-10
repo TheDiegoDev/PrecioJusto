@@ -40,6 +40,7 @@ class ChoseGame : AppCompatActivity() {
         ShopIntent()
     }
 
+    //Gestion del boton de Shop
     private fun ShopIntent() {
         btn_shop.setOnClickListener {
             val intent = Intent(this, Shop::class.java)
@@ -48,11 +49,13 @@ class ChoseGame : AppCompatActivity() {
         }
     }
 
+    //Gestion de la salida de la Activity
     override fun onStop() {
         super.onStop()
         mp.stop()
     }
 
+    //Gestion de la entrada a la Activity
     override fun onStart() {
         super.onStart()
         viewModel.getCoinsValues()
@@ -60,6 +63,7 @@ class ChoseGame : AppCompatActivity() {
         BackgroundSound()
     }
 
+    //Gestion del sonido
     private fun BackgroundSound() {
         mp = MediaPlayer.create(this, R.raw.preciojusto)
         mp.isLooping = true
@@ -69,6 +73,8 @@ class ChoseGame : AppCompatActivity() {
             mp.start()
         }
     }
+
+    //Gestion de las monedas
     private fun ObserveCoins() {
         viewModel.valuesViewMLD.observe(this, Observer {
             text_coins.text = it
@@ -77,8 +83,9 @@ class ChoseGame : AppCompatActivity() {
             editor.apply()
         })
     }
-    private fun setConfigItems(){
 
+    //Poner la vista del recycler en marcha
+    private fun setConfigItems(){
         recyclerView = findViewById(R.id.my_recycler_view)
         gridLayoutManager = GridLayoutManager(applicationContext, 3,LinearLayoutManager.VERTICAL, false)
         recyclerView?.layoutManager = gridLayoutManager
@@ -89,6 +96,7 @@ class ChoseGame : AppCompatActivity() {
         recyclerView?.adapter = alphaAdapters
     }
 
+    //Pasamos los datos al Presenter del Recycler
     private fun setDataInList():ArrayList<AlphaChar>{
 
         val items: ArrayList<AlphaChar> = ArrayList()

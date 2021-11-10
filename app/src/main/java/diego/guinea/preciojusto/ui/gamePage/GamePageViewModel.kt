@@ -2,7 +2,6 @@ package diego.guinea.preciojusto.ui.gamePage
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.android.material.chip.Chip
 import diego.guinea.preciojusto.data.modelo.ObjectsPrice
 import diego.guinea.preciojusto.utils.BaseCallback
 import diego.guinea.preciojusto.utils.contError
@@ -16,6 +15,7 @@ class GamePageViewModel: ViewModel() {
     val livesViewMDL = MutableLiveData<Int>()
     val winsViewMDL = MutableLiveData<Int>()
 
+//Enseñamos segun la funcion diferentes paginas de la API
 
     fun getAllDataPageOne(){
         livesViewMDL.value = contError

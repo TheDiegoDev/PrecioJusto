@@ -18,8 +18,7 @@ class MainActivity : AppCompatActivity() {
         setSplash()
     }
 
-
-
+    //Vista de la pantalla de carga
     private fun setSplash() {
         val animationTop = AnimationUtils.loadAnimation(this, R.anim.animacion_top)
         val animationBottom = AnimationUtils.loadAnimation(this, R.anim.animacion_bottom)

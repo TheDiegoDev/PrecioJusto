@@ -35,7 +35,6 @@ class GamePage : AppCompatActivity() {
     private lateinit var mp: MediaPlayer
     private lateinit var prefs : SharedPreferences
     private var position: Int = 0
-    private var chipContent = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +46,7 @@ class GamePage : AppCompatActivity() {
 
     }
 
+    //Gestionamos la Salida de esta Activity
     override fun onStop() {
         super.onStop()
         mp.stop()
@@ -56,7 +56,7 @@ class GamePage : AppCompatActivity() {
         editor.apply()
     }
 
-
+    //Gestionamos la entrada a la Activity
     override fun onStart() {
         super.onStart()
         position = intent.getIntExtra("position", 0)
@@ -65,6 +65,7 @@ class GamePage : AppCompatActivity() {
         BackgroundSound()
     }
 
+    //Gestionamos el GetData segun la posicion del Recycler del ChoseGame
     private fun setViewModel() {
         when (position) {
             0 -> {viewModel.getAllDataPageOne()}
@@ -79,6 +80,7 @@ class GamePage : AppCompatActivity() {
         }
     }
 
+    //Gestion del sonido
     private fun BackgroundSound() {
         mp = MediaPlayer.create(this, R.raw.intriga)
         mp.isLooping = true
@@ -88,6 +90,7 @@ class GamePage : AppCompatActivity() {
         }
     }
 
+    //Gestionamos los precios del ChipGroup
     private fun setPriceChip(){
 
         val numValues: ArrayList<String> = arrayListOf()
@@ -103,6 +106,7 @@ class GamePage : AppCompatActivity() {
         setRandomText(idx, priceOne, numValues, priceTwo, priceThree)
     }
 
+    //Funcion para poner Precios a cada Chip
     private fun setRandomText(
         idx: Int,
         priceOne: Chip,
@@ -133,6 +137,7 @@ class GamePage : AppCompatActivity() {
         }
     }
 
+    //Poner la cuenta atras en marcha
     private fun setTimerOn(){
         val text = findViewById<TextView>(R.id.textCountDown)
         val duration = TimeUnit.MINUTES.toMillis(1)
@@ -160,6 +165,8 @@ class GamePage : AppCompatActivity() {
         }.start()
 
     }
+
+    //Vista Invisible
     private fun setViewinivsible() {
         progressBar.visibility = View.VISIBLE
         textCountDown.visibility = View.INVISIBLE
@@ -171,6 +178,7 @@ class GamePage : AppCompatActivity() {
         textPoints.visibility = View.INVISIBLE
     }
 
+    //Observer para el cambio en tiempo real de los datos
     private fun observer() {
         viewModel.livesViewMDL.observe(this, Observer {
             contError = it
@@ -185,10 +193,13 @@ class GamePage : AppCompatActivity() {
             getData(it)
         })
     }
+
+    //Ocultar Animacion
     private fun hideLoading() {
         loadingDialog?.let { if (it.isShowing) it.cancel() }
     }
 
+    //Mostrar Animacion Fail
     private fun showDialog() {
         hideLoading()
         loadingDialog = this.showWrongDialog()
@@ -196,6 +207,8 @@ class GamePage : AppCompatActivity() {
             hideLoading()
         }, 2000)
     }
+
+    //Mostrar Animacion Check
     private fun showCheck() {
         hideLoading()
         loadingDialog = this.showCheckDialog()
@@ -203,21 +216,20 @@ class GamePage : AppCompatActivity() {
             hideLoading()
         }, 2000)
     }
-    private fun stopAnimacion() {
-        Handler().postDelayed({
-            hideLoading()
-        }, 1)
-    }
+
+    //Añadir a un array los objetos de la API
     private fun getData(it: ObjectsPrice) {
         pjObject.addAll(it.objetos)
         prepareBackgroud()
     }
 
+    //Gestionamos el boton de atras
     override fun onBackPressed() {
         mCountDown?.cancel()
         super.onBackPressed()
     }
 
+    //Preparamos la pantalla
     private fun prepareBackgroud() {
         var texto = ""
         visibleView()
@@ -245,8 +257,9 @@ class GamePage : AppCompatActivity() {
         }
     }
 
+    //Intent a la Activity final
     private fun winPageIntent() {
-        stopAnimacion()
+        hideLoading()
         if(contError == 0){
             val dialog = CustomDialog()
             dialog.show(supportFragmentManager, "CustomDialog")
@@ -259,6 +272,7 @@ class GamePage : AppCompatActivity() {
 
     }
 
+    //Vista visible
     private fun visibleView() {
         textCountDown.visibility = View.VISIBLE
         progressBar.visibility = View.INVISIBLE
@@ -269,9 +283,8 @@ class GamePage : AppCompatActivity() {
         textPoints.visibility = View.VISIBLE
     }
 
+    //Gestion del clik a la imagen ENTER
     private fun imageClick(num: Int, chipSelect: String) {
-
-        //val textChipSelected = getChipSelected(chipGroup.checkedChipId)
 
             if (chipSelect == pjObject[num].precio) {
                 contWins++
@@ -289,23 +302,15 @@ class GamePage : AppCompatActivity() {
                     textPoints.setTextColor(Color.RED)
                     showDialog()
                 }
-
             }
             for (i in 0 until chipGroup.childCount) {
                 val chip = chipGroup.getChildAt(i) as Chip
                 chip.isChecked = false
             }
-
-
-
     }
 
+    //Gestion del texto de Wins and Lives
     private fun observeWinsAndLives() {
         "WINS: $contWins || LIVES: $contError".also { textPoints.text = it }
-    }
-
-    private fun getChipSelected(checkedChipId: Int): String {
-        chip = findViewById(checkedChipId)
-        return chip.text.toString()
     }
 }
