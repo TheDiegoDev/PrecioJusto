@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-<!--    <diego.guinea.preciojusto.ui.presenter.ExoPlayerView-->
-<!--        android:id="@+id/videoDeFondo"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="right"-->
-<!--        android:background="@color/exo_edit_mode_background_color"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent">-->
-
-<!--    </diego.guinea.preciojusto.ui.presenter.ExoPlayerView>-->
 
     <ImageView
         android:id="@+id/play_button"

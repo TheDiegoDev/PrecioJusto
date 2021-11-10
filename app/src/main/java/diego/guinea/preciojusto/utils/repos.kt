@@ -16,6 +16,8 @@ var Sonido = 0
 var Monedas = 0
 var contWins = 0
 var contError = 2
+var winImage = "https://www.dropbox.com/s/52knr12as885c1s/winner.png?dl=1"
+var loseImage = "https://www.dropbox.com/s/kzt2a7uh3srpxrj/oops.png?dl=1"
 
 //Values para Shop//Implementacion de pago por Goolge pay
 val baseRequest = JSONObject().apply {

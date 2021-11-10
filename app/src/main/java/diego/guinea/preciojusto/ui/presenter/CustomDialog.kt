@@ -13,14 +13,16 @@ import diego.guinea.preciojusto.utils.contError
 import diego.guinea.preciojusto.utils.contWins
 import kotlinx.android.synthetic.main.fragmen_custom_dialog.view.*
 
+//Presenter de un Dialog
+
 class CustomDialog: DialogFragment() {
 
-
+    //Lo enlazamos con el activity y hacemos la logica de los botones
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
+
         val rootView: View =  inflater.inflate(R.layout.fragmen_custom_dialog, container, false)
 
         rootView.btn_cancel.setOnClickListener {
@@ -37,6 +39,8 @@ class CustomDialog: DialogFragment() {
         }
         return rootView
     }
+
+    //Gestionamos posible error
     override fun onStop() {
         if(contError == 0){
             intentWin()
@@ -44,6 +48,7 @@ class CustomDialog: DialogFragment() {
         super.onStop()
     }
 
+    //Gestionamos con Intent la opcion de gastar Coins
     private fun intentWin() {
         val intent = Intent(context, WinPage::class.java)
         intent.putExtra("numCont", "$contWins")

@@ -12,15 +12,17 @@ import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.AlphaChar
 import diego.guinea.preciojusto.ui.gamePage.GamePage
 
+//Presenter de CardView en un RecyclerView para el ChoseGame
 
 class AlphaAdapters(var context: Context, var arrayList: ArrayList<AlphaChar>) : RecyclerView.Adapter<AlphaAdapters.ItemHolder>() {
 
-
+    //Enlazamos el item con el CardView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
      val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.card_view, parent, false)
         return ItemHolder(itemHolder)
     }
 
+    //Gestionamos el Recycler
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val alphaChar: AlphaChar = arrayList[position]
 
@@ -39,6 +41,7 @@ class AlphaAdapters(var context: Context, var arrayList: ArrayList<AlphaChar>) :
         return arrayList.size
     }
 
+    //Gestionamos el CardView
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var icons = itemView.findViewById<ImageView>(R.id.image_cardView)
         var alphas = itemView.findViewById<TextView>(R.id.text_tituloCardView)

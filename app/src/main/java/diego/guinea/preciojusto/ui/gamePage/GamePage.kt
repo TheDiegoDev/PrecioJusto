@@ -266,7 +266,6 @@ class GamePage : AppCompatActivity() {
         textNameObject.visibility = View.VISIBLE
         textDescripcion.visibility = View.VISIBLE
         chipGroup.visibility = View.VISIBLE
-       // imageNext.visibility = View.VISIBLE
         textPoints.visibility = View.VISIBLE
     }
 

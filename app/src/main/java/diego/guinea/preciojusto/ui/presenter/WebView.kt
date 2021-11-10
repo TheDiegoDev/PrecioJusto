@@ -12,11 +12,11 @@ class WebView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
-         val url = intent.getStringExtra("url")
+        val url = intent.getStringExtra("url")
         setWebView(url)
     }
 
-
+    //Uso de WebViewClient para mostrar la Url
     private fun setWebView(url: String?) {
        webView.webViewClient = WebViewClient()
        webView.settings.javaScriptEnabled
