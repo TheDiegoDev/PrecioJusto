@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import diego.guinea.preciojusto.R
 import diego.guinea.preciojusto.data.modelo.AlphaChar
-import diego.guinea.preciojusto.ui.CoinPageViewModel
 import diego.guinea.preciojusto.ui.presenter.AlphaAdapters
 import diego.guinea.preciojusto.ui.shop.Shop
 import diego.guinea.preciojusto.utils.Monedas
