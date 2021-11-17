@@ -101,15 +101,15 @@ class ChoseGame : AppCompatActivity() {
 
         val items: ArrayList<AlphaChar> = ArrayList()
 
-        items.add(AlphaChar(R.mipmap.smartphone, "Moviles"))
-        items.add(AlphaChar(R.mipmap.deportes, "Deportes"))
-        items.add(AlphaChar(R.mipmap.casa, "Hogar"))
-        items.add(AlphaChar(R.mipmap.joya, "Joyas"))
-        items.add(AlphaChar(R.mipmap.cpu, "Electronica"))
-        items.add(AlphaChar(R.mipmap.coche, "Coches"))
-        items.add(AlphaChar(R.mipmap.ropa, "Ropa"))
-        items.add(AlphaChar(R.mipmap.relojes, "Relojes"))
-        items.add(AlphaChar(R.mipmap.bolso, "Bolsos"))
+        items.add(AlphaChar(0, R.mipmap.smartphone, "Moviles"))
+        items.add(AlphaChar(1, R.mipmap.deportes, "Deportes"))
+        items.add(AlphaChar(2, R.mipmap.casa, "Hogar"))
+        items.add(AlphaChar(3, R.mipmap.joya, "Joyas"))
+        items.add(AlphaChar(4, R.mipmap.cpu, "Electronica"))
+        items.add(AlphaChar(5, R.mipmap.coche, "Coches"))
+        items.add(AlphaChar(6, R.mipmap.ropa, "Ropa"))
+        items.add(AlphaChar(7, R.mipmap.relojes, "Relojes"))
+        items.add(AlphaChar(8, R.mipmap.bolso, "Bolsos"))
 
         return items
     }
