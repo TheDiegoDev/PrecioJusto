@@ -16,122 +16,15 @@ class GamePageViewModel: ViewModel() {
     val winsViewMDL = MutableLiveData<Int>()
 
 //Enseñamos segun la funcion diferentes paginas de la API
-
-    fun getAllDataPageOne(){
-        livesViewMDL.value = contError
-        winsViewMDL.value = contWins
-        repositorio.getObjectsPageOne(object : BaseCallback<ObjectsPrice> {
+    fun getPageCharacters(position: String) {
+        repositorio.getPageData(object : BaseCallback<ObjectsPrice> {
             override fun onResult(result: ObjectsPrice) {
                 valuesViewMLD.value = result
             }
             override fun onError(error: Error) {
                 errorViewMLD.value = error
             }
-        })
-    }
-
-    fun getAllDataPageTwo(){
-        livesViewMDL.value = contError
-        winsViewMDL.value = contWins
-        repositorio.getObjectsPageTwo(object : BaseCallback<ObjectsPrice> {
-            override fun onResult(result: ObjectsPrice) {
-                valuesViewMLD.value = result
-            }
-            override fun onError(error: Error) {
-                errorViewMLD.value = error
-            }
-        })
-    }
-
-    fun getAllDataPageThree(){
-        livesViewMDL.value = contError
-        winsViewMDL.value = contWins
-        repositorio.getObjectsPageThree(object : BaseCallback<ObjectsPrice> {
-            override fun onResult(result: ObjectsPrice) {
-                valuesViewMLD.value = result
-            }
-            override fun onError(error: Error) {
-                errorViewMLD.value = error
-            }
-        })
-    }
-
-    fun getAllDataPageFour(){
-        livesViewMDL.value = contError
-        winsViewMDL.value = contWins
-        repositorio.getObjectsPageFour(object : BaseCallback<ObjectsPrice> {
-            override fun onResult(result: ObjectsPrice) {
-                valuesViewMLD.value = result
-            }
-            override fun onError(error: Error) {
-                errorViewMLD.value = error
-            }
-        })
-    }
-
-    fun getAllDataPageFive(){
-        livesViewMDL.value = contError
-        winsViewMDL.value = contWins
-        repositorio.getObjectsPageFive(object : BaseCallback<ObjectsPrice> {
-            override fun onResult(result: ObjectsPrice) {
-                valuesViewMLD.value = result
-            }
-            override fun onError(error: Error) {
-                errorViewMLD.value = error
-            }
-        })
-    }
-
-    fun getAllDataPageSix(){
-        livesViewMDL.value = contError
-        winsViewMDL.value = contWins
-        repositorio.getObjectsPageSix(object : BaseCallback<ObjectsPrice> {
-            override fun onResult(result: ObjectsPrice) {
-                valuesViewMLD.value = result
-            }
-            override fun onError(error: Error) {
-                errorViewMLD.value = error
-            }
-        })
-    }
-
-    fun getAllDataPageSeven(){
-        livesViewMDL.value = contError
-        winsViewMDL.value = contWins
-        repositorio.getObjectsPageSeven(object : BaseCallback<ObjectsPrice> {
-            override fun onResult(result: ObjectsPrice) {
-                valuesViewMLD.value = result
-            }
-            override fun onError(error: Error) {
-                errorViewMLD.value = error
-            }
-        })
-    }
-
-    fun getAllDataPageEight(){
-        livesViewMDL.value = contError
-        winsViewMDL.value = contWins
-        repositorio.getObjectsPageEight(object : BaseCallback<ObjectsPrice> {
-            override fun onResult(result: ObjectsPrice) {
-                valuesViewMLD.value = result
-            }
-            override fun onError(error: Error) {
-                errorViewMLD.value = error
-            }
-        })
-    }
-
-    fun getAllDataPageNine(){
-        livesViewMDL.value = contError
-        winsViewMDL.value = contWins
-        repositorio.getObjectsPageNine(object : BaseCallback<ObjectsPrice> {
-            override fun onResult(result: ObjectsPrice) {
-                valuesViewMLD.value = result
-            }
-            override fun onError(error: Error) {
-                errorViewMLD.value = error
-            }
-        })
+        }, position)
     }
 
 }
