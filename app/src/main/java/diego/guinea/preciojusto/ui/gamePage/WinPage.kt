@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_winpage.*
 class WinPage: AppCompatActivity() {
 
     private var loadingDialog: Dialog? = null
+    private lateinit var lives: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,13 +42,18 @@ class WinPage: AppCompatActivity() {
         loadingDialog = this.showLoseDilog()
         Handler().postDelayed({
             hideLoading()
+            if( lives== "0"){
+                putImage(loseImage)
+            }else{
+                putImage(winImage)
+            }
         }, 3000)
     }
 
     //Decidimos si enseñamos una animacion o otra
     private fun setBackground() {
         val points = intent.getStringExtra("numCont").toString()
-        val lives = intent.getStringExtra("numLives").toString()
+        lives = intent.getStringExtra("numLives").toString()
 
         if (lives == "0"){
             textCoinsWinPage.visibility = View.INVISIBLE
@@ -56,14 +62,14 @@ class WinPage: AppCompatActivity() {
             textContWins.setTextColor(Color.RED)
             "Loser".also { textContWins.text = it }
             "Score: $points".also { textScore.text = it }
-            putImage(loseImage)
+            //putImage(loseImage)
         }else{
             Monedas += 5
             showWinPage()
             textContWins.setTextColor(Color.GREEN)
             "Winner".also { textContWins.text = it }
             "Score: $points".also { textScore.text = it }
-            putImage(winImage)
+           // putImage(winImage)
         }
     }
 

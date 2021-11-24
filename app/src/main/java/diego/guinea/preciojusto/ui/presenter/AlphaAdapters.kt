@@ -31,7 +31,7 @@ class AlphaAdapters(var context: Context, var arrayList: ArrayList<AlphaChar>) :
 
         holder.icons.setOnClickListener{
             val intent = Intent(context, GamePage::class.java)
-            intent.putExtra("position", position)
+            intent.putExtra("position", alphaChar.id)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }

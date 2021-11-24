@@ -67,17 +67,7 @@ class GamePage : AppCompatActivity() {
 
     //Gestionamos el GetData segun la posicion del Recycler del ChoseGame
     private fun setViewModel() {
-        when (position) {
-            0 -> {viewModel.getAllDataPageOne()}
-            1 -> {viewModel.getAllDataPageTwo()}
-            2 -> {viewModel.getAllDataPageThree()}
-            3 -> {viewModel.getAllDataPageFour()}
-            4 -> {viewModel.getAllDataPageFive()}
-            5 -> {viewModel.getAllDataPageSix()}
-            6 -> {viewModel.getAllDataPageSeven()}
-            7 -> {viewModel.getAllDataPageEight()}
-            else -> {viewModel.getAllDataPageNine()}
-        }
+        viewModel.getPageCharacters(position.toString())
     }
 
     //Gestion del sonido
